@@ -20,6 +20,7 @@
 		12638DAA2770D7F400631D6B /* ExchangeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DA92770D7F400631D6B /* ExchangeTestCase.swift */; };
 		12638DAD2771102E00631D6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DAC2771102E00631D6B /* Constants.swift */; };
 		12638DB02771104B00631D6B /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DAF2771104B00631D6B /* Download.swift */; };
+		12638DB2277329A700631D6B /* ItemFixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DB1277329A700631D6B /* ItemFixer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		12638DA92770D7F400631D6B /* ExchangeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTestCase.swift; sourceTree = "<group>"; };
 		12638DAC2771102E00631D6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		12638DAF2771104B00631D6B /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		12638DB1277329A700631D6B /* ItemFixer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFixer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,7 @@
 				120FF5B5276CE3F4008BED80 /* Assets.xcassets */,
 				12638DAB2771100500631D6B /* data */,
 				120FF5BA276CE3F4008BED80 /* Info.plist */,
-				12638DAE2771103800631D6B /* New GroupTools */,
+				12638DAE2771103800631D6B /* Tools */,
 			);
 			path = intrip;
 			sourceTree = "<group>";
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				12638DA32770932F00631D6B /* ModelExchange.swift */,
+				12638DB327732A0800631D6B /* Entities */,
 				12638DA52770935300631D6B /* ModelTranslate.swift */,
 				12638DA72770936400631D6B /* ModelWeather.swift */,
 			);
@@ -147,12 +150,20 @@
 			path = data;
 			sourceTree = "<group>";
 		};
-		12638DAE2771103800631D6B /* New GroupTools */ = {
+		12638DAE2771103800631D6B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				12638DAF2771104B00631D6B /* Download.swift */,
 			);
-			path = "New GroupTools";
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		12638DB327732A0800631D6B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				12638DB1277329A700631D6B /* ItemFixer.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +276,7 @@
 				12638DA82770936400631D6B /* ModelWeather.swift in Sources */,
 				12638D7F276FD17D00631D6B /* ViewControllerWeather.swift in Sources */,
 				12638DAD2771102E00631D6B /* Constants.swift in Sources */,
+				12638DB2277329A700631D6B /* ItemFixer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

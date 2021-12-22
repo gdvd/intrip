@@ -31,7 +31,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monnaie de depart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiK-8a-LhE">
-                                        <rect key="frame" x="85.5" y="122.5" width="143.5" height="30"/>
+                                        <rect key="frame" x="85.5" y="97.5" width="143.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="xBc-BK-zgz"/>
                                         </constraints>
@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7B6-yy-JSv">
-                                        <rect key="frame" x="107" y="244.5" width="100" height="30"/>
+                                        <rect key="frame" x="107" y="195" width="100" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2De-YM-JPL"/>
                                             <constraint firstAttribute="width" constant="100" id="MJ1-4X-gH9"/>
@@ -48,8 +48,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSH-tP-hIN">
+                                        <rect key="frame" x="135" y="293" width="44" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="OK"/>
+                                        <connections>
+                                            <action selector="save:" destination="MBj-Ve-IDe" eventType="touchUpInside" id="JOP-gI-wMY"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monnaie recherchée" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgv-Dz-Bi0">
-                                        <rect key="frame" x="79.5" y="367" width="155.5" height="30"/>
+                                        <rect key="frame" x="79.5" y="391.5" width="155.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="J0r-l0-eL1"/>
                                         </constraints>

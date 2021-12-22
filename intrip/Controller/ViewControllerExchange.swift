@@ -8,13 +8,21 @@
 import UIKit
 
 class ViewControllerExchange: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let exchange = ModelExchange()
+        
     }
-
-    @IBOutlet weak var moneyIn: UITextField!
     
+    @IBOutlet weak var moneyIn: UITextField!
     @IBOutlet weak var moneyOut: UILabel!
+    
+    @IBAction func save(_ sender: UIButton) {
+        //saveChecklistItems()
+    }
+    
+    
+    
 }
+
