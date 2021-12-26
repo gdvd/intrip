@@ -9,77 +9,49 @@ import Foundation
 
 class ModelExchange {
     
-    private var items: [ItemFixer]! = []
+    public static let shared = ModelExchange()
     
-    init() {
-        init4Test() ///TEST
-    }
+    private var items: ItemFixer!
     
-    /// BEGIN  TEST
-    private func init4Test() {
-        
-        let date = Date()
-        let dateWithFormat = date.getFormattedDate(format: "yyyy-MM-dd")
-        print(dateWithFormat)
-        print("Data file path is \(dataFilePath())")
-        print("ifFileExiste : \(ifFileExiste())")
-        items = [writeItemFixer4Onetest()]
-        saveChecklistItems()
-        print("ifFileExiste : \(ifFileExiste())")
-    }
-    private func writeItemFixer4Onetest() -> ItemFixer {
-        let m1 = Money("momaie1",10)
-        let m2 = Money("momaie2",20)
-        let m = [m1, m2]
-        return ItemFixer(success: true, timestamp: 123456, base: "EUR", date: "2021-12-22", rates: m)
-    }
-    /// END  TEST
+    private init() { }
     
-    private func documentsDirectory() -> URL {
-        let paths = FileManager.default.urls(
-            for: .documentDirectory, 
-               in: .userDomainMask)
-        return paths[0]
-    }
-    private func dataFilePath() -> URL {
-        return documentsDirectory().appendingPathComponent("Fixer.plist")
-    }
-    private func saveChecklistItems() {
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(items)
-            try data.write(
-                to: dataFilePath(), 
-                options: Data.WritingOptions.atomic)
-        } catch {
-            print("Error encoding item array: \(error.localizedDescription)")
+    
+    public func getLastValues(){
+        if OneFileManager.ifFileExiste(fileName: Constants.fileNameExchangeFixer) {
+            // File exist
+            print("exist")
+            items = OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
+            
+            // Test if Date is same
+            let date = Date()
+            let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
+            print(dateWithFormat,dateWithFormat.count, dateWithFormat == items.date)
+            if dateWithFormat == items.date {
+                // Date identique
+                // Show values
+            } else {
+                // Date differente
+                Download.shared.downloadRatesWithFixer { item in
+                    if let items = item {
+                        OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: items)
+                        // Show new values
+                    } else {
+                        print("ItemFixer == nil -> Old values is here")
+                    }
+                }
+            }
+        } else {
+            // No file exist
+            print("No exist")
+            Download.shared.downloadRatesWithFixer { item in
+                if let items = item {
+                    OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: items)
+                } else {
+                    print("ItemFixer == nil -> No value available")
+                }
+            }
         }
     }
-    private func loadChecklistItems() {
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path) {
-          let decoder = PropertyListDecoder()
-          do {
-            items = try decoder.decode(
-              [ItemFixer].self, 
-              from: data)
-          } catch {
-            print("Error decoding item array: \(error.localizedDescription)")
-          }
-        }
-      }
-    func ifFileExiste() -> Bool{
-        guard FileManager().fileExists(atPath: dataFilePath().path) else {
-            return false
-        }
-        return true
-    }
+     
 }
 
-extension Date {
-   func getFormattedDate(format: String) -> String {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = format
-        return dateformat.string(from: self)
-    }
-}

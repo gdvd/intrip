@@ -8,7 +8,7 @@
 import Foundation
 
 class ItemFixer: NSObject, Codable {
-    init(success: Bool,timestamp: Int,base: String, date : String, rates: [Money] ){
+    init(success: Bool,timestamp: Double,base: String, date : String, rates: Dictionary<String, Double> ){
         self.success = success
         self.timestamp = timestamp
         self.base = base
@@ -16,17 +16,9 @@ class ItemFixer: NSObject, Codable {
         self.rates = rates
     }
     var success: Bool
-    var timestamp: Int
+    var timestamp: Double
     var base: String
     var date: String
-    var rates: [Money]
+    var rates: Dictionary<String, Double>
 }
 
-class Money: NSObject, Codable {
-    init(_ name: String,_ value: Double){
-        self.name = name
-        self.value = value
-    }
-    var name: String
-    var value: Double
-}
