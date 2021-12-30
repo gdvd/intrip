@@ -12,7 +12,10 @@ struct Constants {
     // Exchange with Fixer
     public static let urlApiFixer = "http://data.fixer.io/api/latest?access_key={APIkey}&format=1&base=EUR"
     public static let fileNameExchangeFixer = "Fixer.plist"
+    public static let APIkeyExchangeFixerPattern = "{APIkey}"
     public static let formatDateFixer = "yyyy-MM-dd"
+    public static let exchangeStrDefaultIn = "EUR"
+    public static let exchangeStrDefaultOut = "USD"
     
     // Translate
     public static let urlApiDeepl = ""

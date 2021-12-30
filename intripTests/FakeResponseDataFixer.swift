@@ -10,11 +10,11 @@ import Foundation
 
 class FakeResponseDataFixer {
     static let responseOK = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
-    static let responseKO = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)!
+    let responseKO = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)!
     
     
     class DownloadError: Error {}
-    static let errorDownload = DownloadError()
+    let errorDownload = DownloadError()
     
     
     var downloadCorrectDataFixer: Data {
@@ -24,7 +24,6 @@ class FakeResponseDataFixer {
         return data
     }
     
-    static let downloadIncorrectDataFixer = "erreur".data(using: .utf8)!
-    
+    let downloadIncorrectDataFixer = "erreur".data(using: .utf8)!
     
 }

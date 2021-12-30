@@ -15,7 +15,7 @@ class DownloadTestCase: XCTestCase {
         let download = Download(
             session:URLSessionFake(data: nil, 
                                    response: nil,
-                                   error: FakeResponseDataFixer.errorDownload))
+                                   error: FakeResponseDataFixer.DownloadError.init()))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         download.downloadRatesWithFixer { itemFixer in

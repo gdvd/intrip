@@ -7,51 +7,66 @@
 
 import Foundation
 
+enum ResponseData {
+    case Success
+    case OldValues(date: String)
+    case Failure(failure: Error)
+}
+
 class ModelExchange {
     
     public static let shared = ModelExchange()
-    
-    private var items: ItemFixer!
-    
     private init() { }
     
+    public var currencies = Currencies()
+    public var exchangeIn = Constants.exchangeStrDefaultIn
+    public var exchangeOut = Constants.exchangeStrDefaultOut
     
-    public func getLastValues(){
-        if OneFileManager.ifFileExiste(fileName: Constants.fileNameExchangeFixer) {
-            // File exist
-            print("exist")
-            items = OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
+    
+    public func getLastValues(callback: @escaping(ResponseData) -> Void ) {
+        
+        if OneFileManager.ifFileExiste(fileName: Constants.fileNameExchangeFixer) { 
+            print("File Exist")
+            let itemFixerOnDisk = OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
             
-            // Test if Date is same
-            let date = Date()
-            let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
-            print(dateWithFormat,dateWithFormat.count, dateWithFormat == items.date)
-            if dateWithFormat == items.date {
-                // Date identique
-                // Show values
+            if ifTodayIsSameSameOf(dateStr: itemFixerOnDisk.date) {
+                // Same Date -> show them
+                currencies.initWithDict((OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)).rates)
+                callback( .Success)
             } else {
-                // Date differente
-                Download.shared.downloadRatesWithFixer { item in
-                    if let items = item {
-                        OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: items)
-                        // Show new values
-                    } else {
-                        print("ItemFixer == nil -> Old values is here")
+                // No same Date
+                Download.shared.downloadRatesWithFixer { result in
+                    switch result {
+                    case .Success(response: let response):
+                        // Download new values ok
+                        self.currencies.initWithDict(response.rates)
+                        callback( .Success)
+                    case .Failure(failure: _):
+                        // Download new values failed -> we will work with old values
+                        self.currencies.initWithDict((itemFixerOnDisk).rates)
+                        callback( .OldValues(date: itemFixerOnDisk.date))
                     }
                 }
             }
-        } else {
-            // No file exist
-            print("No exist")
-            Download.shared.downloadRatesWithFixer { item in
-                if let items = item {
-                    OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: items)
-                } else {
-                    print("ItemFixer == nil -> No value available")
+        } else { 
+            print("No File Exist")
+            Download.shared.downloadRatesWithFixer { result in
+                switch result {
+                case .Success(response: let response):
+                    self.currencies.initWithDict(response.rates)
+                    OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
+                    callback( .Success)
+                case .Failure(failure: let error):
+                    callback( .Failure(failure: error))
                 }
             }
         }
     }
-     
+    
+    private func ifTodayIsSameSameOf(dateStr : String) -> Bool {
+        let date = Date()
+        let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
+        return dateWithFormat == dateStr
+    }
 }
 

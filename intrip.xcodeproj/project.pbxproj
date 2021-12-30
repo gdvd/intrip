@@ -28,6 +28,7 @@
 		12638DB52773427000631D6B /* ModelExchange+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DB42773427000631D6B /* ModelExchange+Ext.swift */; };
 		12638DB72774721A00631D6B /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DB62774721A00631D6B /* ApiKeys.swift */; };
 		12638DB92774D15C00631D6B /* OneFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DB82774D15C00631D6B /* OneFileManager.swift */; };
+		12A51836277B27150083B09B /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A51835277B27150083B09B /* Currencies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		12638DB42773427000631D6B /* ModelExchange+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelExchange+Ext.swift"; sourceTree = "<group>"; };
 		12638DB62774721A00631D6B /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		12638DB82774D15C00631D6B /* OneFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneFileManager.swift; sourceTree = "<group>"; };
+		12A51835277B27150083B09B /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				12638DB1277329A700631D6B /* ItemFixer.swift */,
+				12A51835277B27150083B09B /* Currencies.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				12638D7D276FD15F00631D6B /* ViewControllerTranslate.swift in Sources */,
 				120FF5AD276CE3F3008BED80 /* AppDelegate.swift in Sources */,
 				12638DA82770936400631D6B /* ModelWeather.swift in Sources */,
+				12A51836277B27150083B09B /* Currencies.swift in Sources */,
 				12638D7F276FD17D00631D6B /* ViewControllerWeather.swift in Sources */,
 				12638DB52773427000631D6B /* ModelExchange+Ext.swift in Sources */,
 				12638DB92774D15C00631D6B /* OneFileManager.swift in Sources */,

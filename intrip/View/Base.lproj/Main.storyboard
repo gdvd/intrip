@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ea2-Re-D2a">
-                                <rect key="frame" x="20" y="94" width="374" height="479"/>
+                                <rect key="frame" x="20" y="94" width="374" height="459"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6z-os-Fu4">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -36,12 +36,18 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z84-aI-LN1">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="postal-code"/>
+                                                <connections>
+                                                    <action selector="moneyInChange:" destination="MBj-Ve-IDe" eventType="editingChanged" id="HWH-Q2-dog"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQ2-Ca-fut">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <action selector="moneyOutChange:" destination="MBj-Ve-IDe" eventType="editingChanged" id="OGW-PJ-8CK"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -51,13 +57,21 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ksr-Oa-cSo">
-                                        <rect key="frame" x="0.0" y="127" width="374" height="352"/>
+                                        <rect key="frame" x="0.0" y="127" width="374" height="332"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVV-0o-5HN">
-                                                <rect key="frame" x="0.0" y="0.0" width="177" height="352"/>
+                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVV-0o-5HN">
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="332"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="MBj-Ve-IDe" id="GgT-gc-3pZ"/>
+                                                    <outlet property="delegate" destination="MBj-Ve-IDe" id="Wud-x8-Wx2"/>
+                                                </connections>
                                             </pickerView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QL8-Dp-j2X">
-                                                <rect key="frame" x="197" y="0.0" width="177" height="352"/>
+                                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QL8-Dp-j2X">
+                                                <rect key="frame" x="197" y="0.0" width="177" height="332"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="MBj-Ve-IDe" id="ce9-o4-1jk"/>
+                                                    <outlet property="delegate" destination="MBj-Ve-IDe" id="Ww8-y7-UP5"/>
+                                                </connections>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
@@ -76,22 +90,35 @@
                                     <constraint firstItem="Bld-l4-ReT" firstAttribute="leading" secondItem="Ea2-Re-D2a" secondAttribute="leading" id="wyV-1K-7Lf"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJG-9d-6rV">
+                                <rect key="frame" x="20" y="578" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0ef-Ib-fpI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Qg-pH-PXA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Qg-pH-PXA" firstAttribute="bottom" secondItem="Ea2-Re-D2a" secondAttribute="bottom" constant="240" id="4WI-K7-lYI"/>
+                            <constraint firstItem="7Qg-pH-PXA" firstAttribute="bottom" secondItem="Ea2-Re-D2a" secondAttribute="bottom" constant="260" id="4WI-K7-lYI"/>
+                            <constraint firstItem="EJG-9d-6rV" firstAttribute="leading" secondItem="7Qg-pH-PXA" secondAttribute="leading" constant="20" id="4jZ-Ye-I5G"/>
                             <constraint firstItem="Ea2-Re-D2a" firstAttribute="leading" secondItem="7Qg-pH-PXA" secondAttribute="leading" constant="20" id="RDU-Rt-vWl"/>
                             <constraint firstItem="Ea2-Re-D2a" firstAttribute="top" secondItem="7Qg-pH-PXA" secondAttribute="top" constant="50" id="kMj-Ac-cyX"/>
                             <constraint firstItem="7Qg-pH-PXA" firstAttribute="trailing" secondItem="Ea2-Re-D2a" secondAttribute="trailing" constant="20" id="mKr-Ed-d8j"/>
+                            <constraint firstItem="EJG-9d-6rV" firstAttribute="top" secondItem="Ea2-Re-D2a" secondAttribute="bottom" constant="25" id="rbe-ER-xxe"/>
+                            <constraint firstItem="7Qg-pH-PXA" firstAttribute="trailing" secondItem="EJG-9d-6rV" secondAttribute="trailing" constant="20" id="xpR-i9-8n9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Exchange" image="exchange" landscapeImage="exchange" largeContentSizeImage="exchange" selectedImage="exchange" id="xCs-EB-vkV"/>
                     <connections>
-                        <outlet property="currencyIn" destination="hVV-0o-5HN" id="U03-EH-2ki"/>
-                        <outlet property="currencyOut" destination="QL8-Dp-j2X" id="RDy-JN-HVf"/>
+                        <outlet property="currencyPickerViewIn" destination="hVV-0o-5HN" id="oNy-6e-hGI"/>
+                        <outlet property="currencyPickerViewOut" destination="QL8-Dp-j2X" id="efN-4w-K1w"/>
                         <outlet property="moneyIn" destination="Z84-aI-LN1" id="5qM-0z-oDm"/>
-                        <outlet property="moneyOut" destination="eQ2-Ca-fut" id="zBZ-2e-4Oi"/>
+                        <outlet property="moneyOut" destination="eQ2-Ca-fut" id="XuI-3r-ePu"/>
+                        <outlet property="msg" destination="EJG-9d-6rV" id="p1f-Il-eyO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9P-z0-4w8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
