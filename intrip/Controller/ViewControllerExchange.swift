@@ -16,7 +16,6 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var msg: UILabel!
     
     private var exchange: ModelExchange!
-//    private var arrayExchange: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +32,15 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
                 self.setupPickerviewsWithDefaultValues()
             case .Failure(failure: let failure):
                 self.msg.text = failure.localizedDescription
+                self.showError(msg: failure.localizedDescription)
             }
         })
     }
-    
+    private func showError(msg: String){
+        let alertVC = UIAlertController(title: "Impossible", message: msg, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
     private func setupPickerviewsWithDefaultValues(){
         let posIn = exchange.currencies.getPosOfNameExchange(nameExchange: Constants.exchangeStrDefaultIn)
         if posIn >= 0 {
@@ -54,51 +58,84 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func moneyInChange(_ sender: UITextField) {
-        inChange(sender.text!)
-    }
-    
-    private func inChange(_ valTxt: String){
-        let doubleMoneyIn = checkFormat(valTxt)
-        if doubleMoneyIn == 0 {
-            resetValues()
-        } else {
-            moneyOut.text = (doubleMoneyIn * getRatio()).description
+        if let value = sender.text {
+            inChange(valTxt: value)
         }
     }
     
-    private func outChange(_ valTxt: String){
-        let doubleMoneyOut = checkFormat(valTxt)
-        if doubleMoneyOut == 0 {
-            resetValues()
-        } else {
-            moneyIn.text = (doubleMoneyOut / getRatio()).description
-        }
+    private func inChange(valTxt: String){
+        let (curIn, curOut) = exchange.moneyInChange(
+            valTxtIn: valTxt, 
+            currencyIn: currencyPickerViewIn.selectedRow(inComponent: 0), 
+            currencyOut: currencyPickerViewOut.selectedRow(inComponent: 0))
+        setValues(curIn: reformatStrEnter(numberStr: curIn), curOut: reformatStrWithRate(numberStr: curOut))
     }
     
-    private func getRatio() -> Double {
-        return exchange.currencies.getRatio(currencyPickerViewIn.selectedRow(inComponent: 0), currencyPickerViewOut.selectedRow(inComponent: 0))
+    private func outChange(valTxt: String){
+        let (curIn, curOut) = exchange.moneyOutChange(
+            valTxtOut: valTxt, 
+            currencyOut: currencyPickerViewOut.selectedRow(inComponent: 0), 
+            currencyIn: currencyPickerViewIn.selectedRow(inComponent: 0))
+        setValues(curIn: reformatStrWithRate(numberStr: curIn), curOut: reformatStrEnter(numberStr: curOut))
     }
     
     @IBAction func moneyOutChange(_ sender: UITextField) {
-        outChange(sender.text!)
+        if let value = sender.text {
+            outChange(valTxt: value)
+        }
+    }
+    private func setValues(curIn: String, curOut: String){
+            moneyIn.text = curIn
+            moneyOut.text = curOut
+    }
+    private func reformatStrWithRate(numberStr: String) -> String {
+        if !numberStr.contains("e") {
+            var nSplitPoint = numberStr.split(separator: ".")
+            if nSplitPoint.count == 2 {
+                if nSplitPoint[1].count > 2 {
+                    nSplitPoint[1] = nSplitPoint[1].prefix(2)
+                }
+                if Int(nSplitPoint[1]) == 0 {
+                    nSplitPoint.remove(at: 1)
+                }
+            }
+            return nSplitPoint.joined(separator: ".")
+        } else {
+            return numberStr
+        }
+    }
+    private func reformatStrEnter(numberStr: String) -> String {
+        if  numberStr.split(separator: "e").count == 2 {
+            return numberStr
+        } else {
+            var nSplitPoint = numberStr.split(separator: ".")
+            if nSplitPoint.count == 2 {
+                let i0 = Int(nSplitPoint[0]) ?? 0
+                nSplitPoint[0] = "\(i0)"
+                return nSplitPoint.joined(separator: ".")
+            } else {
+                let i = Int(nSplitPoint[0]) ?? 0
+                return "\(i)" + (numberStr.contains(".") ? "." : "")
+            }
+        }
     }
     private func resetValues(){
         moneyIn.text = "0"
         moneyOut.text = "0"
-    }
-    private func checkFormat(_ txt: String) -> Double{
-        let myDouble = Double(txt) ?? 0.0
-        return myDouble
     }
     
     //MARK: - pickerView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView.tag == 1 {
-            inChange(moneyIn.text!)
+            if let value = moneyIn.text {
+                inChange(valTxt: value)
+            }
         }
         if pickerView.tag == 2 {
-            outChange(moneyOut.text!)
+            if let value = moneyOut.text {
+                outChange(valTxt: value)
+            }
         }        
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -17,9 +17,10 @@ struct Currencies {
     public var names: [String]
     public var values: [Double]
     
-    public mutating func initWithDict(_ dict: Dictionary<String, Double>) {
+    public mutating func initWithDictAndSort(_ dict: Dictionary<String, Double>) {
         reset()
-        for (key, value) in dict {
+        let sortedArray = dict.sorted( by: { $0.0 < $1.0 })
+        for (key, value) in sortedArray {
             names.append(key)
             values.append(value)
         }
@@ -27,22 +28,6 @@ struct Currencies {
     private mutating func reset() {
         names = []
         values = []
-    }
-    
-    public func getRatio(_ nameExchangeIn: String, _ nameExchangeOut: String) -> Double{
-        
-        let posIn = getPosOfNameExchange(nameExchange: nameExchangeIn)
-        if posIn >= 0 {
-            let posOut = getPosOfNameExchange(nameExchange: nameExchangeOut)
-            if posOut >= 0 {
-                // values are good
-                return values[posOut] / values[posIn]
-            } else {
-                return 0.0
-            }
-        } else {
-            return 0.0
-        }
     }
     
     public func getRatio(_ nbExchangeIn: Int, _ nbExchangeOut: Int) -> Double {

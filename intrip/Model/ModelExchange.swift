@@ -12,6 +12,9 @@ enum ResponseData {
     case OldValues(date: String)
     case Failure(failure: Error)
 }
+enum returnValues {
+    case newalues(valueMoneyIn: String, valueMoneyOut: String)
+}
 
 class ModelExchange {
     
@@ -26,34 +29,34 @@ class ModelExchange {
     public func getLastValues(callback: @escaping(ResponseData) -> Void ) {
         
         if OneFileManager.ifFileExiste(fileName: Constants.fileNameExchangeFixer) { 
-            print("File Exist")
             let itemFixerOnDisk = OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
             
             if ifTodayIsSameSameOf(dateStr: itemFixerOnDisk.date) {
-                // Same Date -> show them
-                currencies.initWithDict((OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)).rates)
+                // File Exist - Same Date -> show them
+                currencies.initWithDictAndSort((OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)).rates)
                 callback( .Success)
             } else {
-                // No same Date
+                // File Exist - No same Date -> Reload
                 Download.shared.downloadRatesWithFixer { result in
                     switch result {
                     case .Success(response: let response):
                         // Download new values ok
-                        self.currencies.initWithDict(response.rates)
+                        self.currencies.initWithDictAndSort(response.rates)
+                        OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
                         callback( .Success)
                     case .Failure(failure: _):
                         // Download new values failed -> we will work with old values
-                        self.currencies.initWithDict((itemFixerOnDisk).rates)
+                        self.currencies.initWithDictAndSort(itemFixerOnDisk.rates)
                         callback( .OldValues(date: itemFixerOnDisk.date))
                     }
                 }
             }
         } else { 
-            print("No File Exist")
+            // No File Exist
             Download.shared.downloadRatesWithFixer { result in
                 switch result {
                 case .Success(response: let response):
-                    self.currencies.initWithDict(response.rates)
+                    self.currencies.initWithDictAndSort(response.rates)
                     OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
                     callback( .Success)
                 case .Failure(failure: let error):
@@ -63,10 +66,46 @@ class ModelExchange {
         }
     }
     
+    public func moneyInChange(valTxtIn: String, currencyIn: Int, currencyOut: Int) -> (valueMoneyIn : String , valueMoneyOut :String){
+        if !verifyIfDataExist(){
+            return (valueMoneyIn : "0", valueMoneyOut : "0")
+        }
+        let doubleMoneyIn = checkFormat(valTxtIn)
+
+        if doubleMoneyIn == 0 && !valTxtIn.starts(with: "0.") {
+            return (valueMoneyIn : "0", valueMoneyOut : "0")
+        } else {
+            let moneyOut = (doubleMoneyIn * currencies.getRatio(currencyIn,currencyOut )).description
+            return (valueMoneyIn : valTxtIn, valueMoneyOut : moneyOut)
+        }
+    }
+    
+    public func moneyOutChange(valTxtOut: String, currencyOut: Int, currencyIn: Int) -> (valueMoneyIn : String , valueMoneyOut :String){
+        
+        if !verifyIfDataExist(){
+            return (valueMoneyIn : "0", valueMoneyOut : "0")
+        }
+        let doubleMoneyOut = checkFormat(valTxtOut)
+        
+        if doubleMoneyOut == 0 && !valTxtOut.contains(".") {
+            return (valueMoneyIn : "0", valueMoneyOut : "0")
+        } else {
+            let moneyIn = (doubleMoneyOut / currencies.getRatio(currencyIn,currencyOut )).description
+            return (valueMoneyIn : moneyIn, valueMoneyOut : valTxtOut)
+        }
+    }
+    private func checkFormat(_ txt: String) -> Double{
+        let myDouble = Double(txt) ?? 0.0
+        return myDouble
+    }
+    
     private func ifTodayIsSameSameOf(dateStr : String) -> Bool {
         let date = Date()
         let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
         return dateWithFormat == dateStr
+    }
+    private func verifyIfDataExist() -> Bool {
+        return currencies.names.count > 0
     }
 }
 

@@ -36,15 +36,15 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z84-aI-LN1">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="postal-code"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="one-time-code"/>
                                                 <connections>
-                                                    <action selector="moneyInChange:" destination="MBj-Ve-IDe" eventType="editingChanged" id="HWH-Q2-dog"/>
+                                                    <action selector="moneyInChange:" destination="MBj-Ve-IDe" eventType="editingChanged" id="IDT-zV-MMg"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQ2-Ca-fut">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" smartInsertDeleteType="no" smartQuotesType="no" textContentType="one-time-code"/>
                                                 <connections>
                                                     <action selector="moneyOutChange:" destination="MBj-Ve-IDe" eventType="editingChanged" id="OGW-PJ-8CK"/>
                                                 </connections>
@@ -116,7 +116,7 @@
                     <connections>
                         <outlet property="currencyPickerViewIn" destination="hVV-0o-5HN" id="oNy-6e-hGI"/>
                         <outlet property="currencyPickerViewOut" destination="QL8-Dp-j2X" id="efN-4w-K1w"/>
-                        <outlet property="moneyIn" destination="Z84-aI-LN1" id="5qM-0z-oDm"/>
+                        <outlet property="moneyIn" destination="Z84-aI-LN1" id="4A1-QR-DQ4"/>
                         <outlet property="moneyOut" destination="eQ2-Ca-fut" id="XuI-3r-ePu"/>
                         <outlet property="msg" destination="EJG-9d-6rV" id="p1f-Il-eyO"/>
                     </connections>
