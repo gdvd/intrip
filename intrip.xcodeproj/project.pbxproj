@@ -29,6 +29,8 @@
 		12638DB72774721A00631D6B /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DB62774721A00631D6B /* ApiKeys.swift */; };
 		12638DB92774D15C00631D6B /* OneFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12638DB82774D15C00631D6B /* OneFileManager.swift */; };
 		12A51836277B27150083B09B /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A51835277B27150083B09B /* Currencies.swift */; };
+		12E7990827844C2A008B446F /* WeatherCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E7990727844C2A008B446F /* WeatherCity.swift */; };
+		12E7990A27849DC2008B446F /* OpenWeatherMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E7990927849DC2008B446F /* OpenWeatherMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		12638DB62774721A00631D6B /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		12638DB82774D15C00631D6B /* OneFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneFileManager.swift; sourceTree = "<group>"; };
 		12A51835277B27150083B09B /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		12E7990727844C2A008B446F /* WeatherCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCity.swift; sourceTree = "<group>"; };
+		12E7990927849DC2008B446F /* OpenWeatherMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,8 @@
 			children = (
 				12638DB1277329A700631D6B /* ItemFixer.swift */,
 				12A51835277B27150083B09B /* Currencies.swift */,
+				12E7990727844C2A008B446F /* WeatherCity.swift */,
+				12E7990927849DC2008B446F /* OpenWeatherMap.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -304,8 +310,10 @@
 				12638D7F276FD17D00631D6B /* ViewControllerWeather.swift in Sources */,
 				12638DB52773427000631D6B /* ModelExchange+Ext.swift in Sources */,
 				12638DB92774D15C00631D6B /* OneFileManager.swift in Sources */,
+				12E7990827844C2A008B446F /* WeatherCity.swift in Sources */,
 				12638DAD2771102E00631D6B /* Constants.swift in Sources */,
 				12638DB2277329A700631D6B /* ItemFixer.swift in Sources */,
+				12E7990A27849DC2008B446F /* OpenWeatherMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
