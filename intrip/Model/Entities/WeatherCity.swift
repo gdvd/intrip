@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherCity {
+struct WeatherCity {
     init(id: Int, lon: String, lat: String, cityName: String) {
         self.id = id
         self.lon = lon

@@ -18,28 +18,19 @@ class DownloadTestCase: XCTestCase {
                                        error: FakeResponseDataFixer.DownloadError.init()))
             // When
             let expectation = XCTestExpectation(description: "Wait for queue change.")
-            download.downloadRatesWithFixer { networkresponse in
+            download.downloadRatesWithFixer { networkresp in
                 // Then
-                XCTAssert(true)
+                switch networkresp {
+                case .Success:
+                    XCTAssert(false)
+                case .Failure:
+                    XCTAssert(true)
+                }
                 expectation.fulfill()
             }
             wait(for: [expectation], timeout: 0.01)
         }
 
-//    func testDownloadratesWithFixerShouldGetFailedCallbackIfError(){
-//        // Given
-//        let download = Download(
-//            session:URLSessionFake(data: nil, 
-//                                   response: nil,
-//                                   error: FakeResponseDataFixer.DownloadError.init()))
-//        // When
-//        let expectation = XCTestExpectation(description: "Wait for queue change.")
-//        download.downloadRatesWithFixer { itemFixer in
-//            // Then
-//            XCTAssertNil(itemFixer)
-//            expectation.fulfill()
-//        }
-//        wait(for: [expectation], timeout: 0.01)
-//    }
+
     
 }

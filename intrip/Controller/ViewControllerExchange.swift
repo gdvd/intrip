@@ -14,11 +14,19 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var currencyPickerViewIn: UIPickerView!
     @IBOutlet weak var currencyPickerViewOut: UIPickerView!
     @IBOutlet weak var msg: UILabel!
+    @IBOutlet var viewExchange: UIView!
     
+
     private var exchange: ModelExchange!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+        
         exchange = ModelExchange.shared
         exchange.getLastValues(callback: { 
             response in
@@ -36,6 +44,11 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         })
     }
+    
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
+    }
+    
     private func showError(msg: String){
         let alertVC = UIAlertController(title: "Impossible", message: msg, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

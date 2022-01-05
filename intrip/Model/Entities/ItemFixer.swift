@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ItemFixer: NSObject, Codable {
+struct ItemFixer: Codable {
     init(success: Bool,timestamp: Double,base: String, date : String, rates: Dictionary<String, Double> ){
         self.success = success
         self.timestamp = timestamp

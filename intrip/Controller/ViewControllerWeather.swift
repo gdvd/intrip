@@ -49,7 +49,6 @@ class ViewControllerWeather: UIViewController {
         labelDetailCity2.text = modelWeather.weatherCities[1].weather!.current.weather[0].description
         labelWeatherMain2.text = modelWeather.weatherCities[1].weather!.current.weather[0].main
         let nameIcon2 = modelWeather.weatherCities[1].weather!.current.weather[0].icon
-        print(nameIcon2 + ".png")
         if let img2 = UIImage(named: nameIcon2 + ".png") {
             imageWeatherC2.image = img2
         }

@@ -11,8 +11,16 @@ class ViewControllerTranslate: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+        
     }
 
-
+    
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
+    }
 }
