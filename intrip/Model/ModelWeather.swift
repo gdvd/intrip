@@ -33,9 +33,7 @@ class ModelWeather {
         Download.shared.downloadWeatherData(lon: weatherCities[0].lon, lat: weatherCities[0].lat) { result in
             switch result {
             case .Success(response: let resp0):
-                print(resp0.current.temp)
                 self.weatherCities[0].weather = resp0
-                print(resp0.current.weather.description)
                 
                 Download.shared.downloadWeatherData(lon: self.weatherCities[1].lon, lat: self.weatherCities[1].lat) { result in
                     switch result {
