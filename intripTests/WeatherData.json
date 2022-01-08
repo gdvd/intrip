@@ -1,0 +1,286 @@
+{
+    "lat": 40.7143,
+    "lon": -74.006,
+    "timezone": "America/New_York",
+    "timezone_offset": -18000,
+    "current": {
+        "dt": 1641478799,
+        "sunrise": 1641471604,
+        "sunset": 1641505399,
+        "temp": 2.27,
+        "feels_like": -3.06,
+        "pressure": 1013,
+        "humidity": 52,
+        "dew_point": -5.83,
+        "uvi": 0.33,
+        "clouds": 0,
+        "visibility": 10000,
+        "wind_speed": 7.15,
+        "wind_deg": 281,
+        "wind_gust": 11.18,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "ciel dégagé",
+                "icon": "01d"
+            }
+        ]
+    },
+    "minutely": [
+        {
+            "dt": 1641478800,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641478860,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641478920,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641478980,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479040,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479100,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479160,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479220,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479280,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479340,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479400,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479460,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479520,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479580,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479640,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479700,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479760,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479820,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479880,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641479940,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480000,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480060,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480120,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480180,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480240,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480300,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480360,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480420,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480480,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480540,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480600,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480660,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480720,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480780,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480840,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480900,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641480960,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481020,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481080,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481140,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481200,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481260,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481320,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481380,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481440,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481500,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481560,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481620,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481680,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481740,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481800,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481860,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481920,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641481980,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482040,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482100,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482160,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482220,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482280,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482340,
+            "precipitation": 0
+        },
+        {
+            "dt": 1641482400,
+            "precipitation": 0
+        }
+    ],
+    "alerts": [
+        {
+            "sender_name": "NWS New York City - Upton (Long Island and New York City)",
+            "event": "Winter Weather Advisory",
+            "start": 1641531600,
+            "end": 1641574800,
+            "description": "...WINTER WEATHER ADVISORY IN EFFECT FROM MIDNIGHT TONIGHT TO\nNOON EST FRIDAY...\n* WHAT...Snow expected. Total snow accumulations of 3 to 5\ninches.\n* WHERE...Portions of northeast New Jersey and southeast New\nYork.\n* WHEN...From midnight tonight to noon EST Friday.\n* IMPACTS...Plan on slippery road conditions. The hazardous\nconditions will impact the morning commute.\n* ADDITIONAL DETAILS...Snowfall rates could range between one half\ninch and one inch per hour in any heavy snowbands.",
+            "tags": []
+        }
+    ]
+}

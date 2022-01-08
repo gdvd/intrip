@@ -9,12 +9,12 @@ import Foundation
 
 class OneFileManager {
     
-    public static func ifFileExiste(fileName: String) -> Bool{
+    public static func ifFileExist(fileName: String) -> Bool{
         print(documentsDirectory().path + "/" + fileName)
         return FileManager().fileExists(atPath: documentsDirectory().path + "/" + fileName)
     }
       
-    public static func documentsDirectory() -> URL {
+    private static func documentsDirectory() -> URL {
         let paths = FileManager.default.urls(
             for: .documentDirectory, 
                in: .userDomainMask)

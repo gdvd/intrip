@@ -39,6 +39,7 @@ class ModelWeather {
                     switch result {
                     case .Success(response: let resp1):
                         print(resp1.current.weather.description)
+                        print(resp1)
                         self.weatherCities[1].weather = resp1
                         callBack(.Success)
                     case .Failure(failure: let error):

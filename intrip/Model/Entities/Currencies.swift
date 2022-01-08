@@ -33,7 +33,7 @@ struct Currencies {
     public func getRatio(_ nbExchangeIn: Int, _ nbExchangeOut: Int) -> Double {
         return values[nbExchangeOut] / values[nbExchangeIn]
     }
-    private func getCurrentExchange(_ positionInListOfValues: Int) -> Double {
+    public func getCurrentExchange(_ positionInListOfValues: Int) -> Double {
         return values[positionInListOfValues]
     }
     public func getPosOfNameExchange(nameExchange: String) -> Int {

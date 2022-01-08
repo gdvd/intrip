@@ -1,0 +1,27 @@
+Source : https://www.deepl.com/fr/docs-api/translating-text/request/
+With : source_lang Optional
+
+"BG" - Bulgarian
+"CS" - Czech
+"DA" - Danish
+"DE" - German
+"EL" - Greek
+"EN" - English
+"ES" - Spanish
+"ET" - Estonian
+"FI" - Finnish
+"FR" - French
+"HU" - Hungarian
+"IT" - Italian
+"JA" - Japanese
+"LT" - Lithuanian
+"LV" - Latvian
+"NL" - Dutch
+"PL" - Polish
+"PT" - Portuguese
+"RO" - Romanian
+"RU" - Russian
+"SK" - Slovak
+"SL" - Slovenian
+"SV" - Swedish
+"ZH" - Chinese

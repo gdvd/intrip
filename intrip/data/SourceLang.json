@@ -1,0 +1,29 @@
+{
+    "source_lang": [
+        { "code":"BG", "lang": "Bulgarian"}
+        { "code":"CS", "lang": "Czech"}
+        { "code":"DA", "lang": "Danish"}
+        { "code":"DE", "lang": "German"}
+        { "code":"EL", "lang": "Greek"}
+        { "code":"EN", "lang": "English"}
+        { "code":"ES", "lang": "Spanish"}
+        { "code":"ET", "lang": "Estonian"}
+        { "code":"FI", "lang": "Finnish"}
+        { "code":"FR", "lang": "French"}
+        { "code":"HU", "lang": "Hungarian"}
+        { "code":"IT", "lang": "Italian"}
+        { "code":"JA", "lang": "Japanese"}
+        { "code":"LT", "lang": "Lithuanian"}
+        { "code":"LV", "lang": "Latvian"}
+        { "code":"NL", "lang": "Dutch"}
+        { "code":"PL", "lang": "Polish"}
+        { "code":"PT", "lang": "Portuguese"}
+        { "code":"RO", "lang": "Romanian"}
+        { "code":"RU", "lang": "Russian"}
+        { "code":"SK", "lang": "Slovak"}
+        { "code":"SL", "lang": "Slovenian"}
+        { "code":"SV", "lang": "Swedish"}
+        { "code":"ZH", "lang": "Chinese"}
+    ]
+}
+

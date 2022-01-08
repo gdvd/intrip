@@ -1,14 +1,14 @@
 //
-//  FakeResponseDataFixer.swift
+//  FakeResponseDataWeather.swift
 //  intripTests
 //
-//  Created by Gilles David on 25/12/2021.
+//  Created by Gilles David on 07/01/2022.
 //
 
 import Foundation
 
-
-class FakeResponseDataFixer {
+class FakeResponseDataWeather {
+    
     static let responseOK = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!,
                                             statusCode: 200, 
                                             httpVersion: nil, 
@@ -23,9 +23,9 @@ class FakeResponseDataFixer {
     let errorDownload = DownloadError()
     
     
-    static var downloadCorrectDataFixer: Data {
-        let bundle = Bundle(for: FakeResponseDataFixer.self)
-        let url = bundle.url(forResource: "Fixer", withExtension: "json")
+    static var downloadCorrectDataWeather: Data {
+        let bundle = Bundle(for: FakeResponseDataWeather.self)
+        let url = bundle.url(forResource: "WeatherData", withExtension: "json")
         let data = try! Data(contentsOf: url!)
         return data
     }

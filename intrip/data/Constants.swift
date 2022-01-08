@@ -18,8 +18,10 @@ struct Constants {
     public static let exchangeStrDefaultOut = "USD"
     
     // Translate
-    public static let urlApiDeepl = ""
-  
+    public static let urlApiDeepl = "https://api-free.deepl.com/v2/translate?auth_key={APIkey}&text={textToTranslate}&target_lang="
+    public static let optionSourceLang = "&source_lang="
+    public static let textToTranslatePattern = "{textToTranslate}"
+    
     // Weather
     public static let urlApiOpenweathermap = "https://api.openweathermap.org/data/2.5/onecall?lat={Lat}&lon={Lon}&exclude=hourly,daily&appid={APIkey}&units=metric&lang=fr"
     public static let latOpenweathermapPattern = "{Lat}"

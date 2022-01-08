@@ -28,7 +28,7 @@ class ModelExchange {
     
     public func getLastValues(callback: @escaping(ResponseData) -> Void ) {
         
-        if OneFileManager.ifFileExiste(fileName: Constants.fileNameExchangeFixer) { 
+        if OneFileManager.ifFileExist(fileName: Constants.fileNameExchangeFixer) { 
             let itemFixerOnDisk = OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
             
             if ifTodayIsSameSameOf(dateStr: itemFixerOnDisk.date) {

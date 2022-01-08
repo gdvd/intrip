@@ -13,7 +13,7 @@ struct OpenWeatherMap: Codable {
     let timezone: String
     let timezone_offset: Int
     let current: Current
-    let minutely: [MinutelyItem]
+//    let minutely: [MinutelyItem]
 }
 struct Current: Codable {
     let dt: Double
@@ -37,7 +37,7 @@ struct Weather: Codable {
     let description: String
     let icon: String
 }
-struct MinutelyItem: Codable {
-    let dt: Double
-    let precipitation: Double
-}
+//struct MinutelyItem: Codable {
+//    let dt: Double
+//    let precipitation: Double
+//}
