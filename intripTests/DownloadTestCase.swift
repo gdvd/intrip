@@ -12,7 +12,13 @@ import XCTest
 
 class DownloadTestCase: XCTestCase {
     
-    //MARK: -  Weather
+    //MARK: - Translate
+    func testDownloadtranslateWithTranslateShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
+        
+    }
+    
+    
+    //MARK: - Weather
     func testDownloadweatherWithWeatherShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
         // Given
         let download = Download(
@@ -154,7 +160,7 @@ class DownloadTestCase: XCTestCase {
     }
     
     
-    //MARK: -  Fixer
+    //MARK: - Fixer
     func testDownloadratesWithFixerShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
         // Given
         let download = Download(

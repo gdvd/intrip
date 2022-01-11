@@ -75,7 +75,6 @@ class Download {
                         .replacingOccurrences(of: Constants.lonOpenweathermapPattern, with: lon))
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
-        //print("Download weather now : " + request.description)
         
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in

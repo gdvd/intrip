@@ -14,6 +14,7 @@
 		1219E8A9278C92B600502C07 /* ResponseDeepl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8A8278C92B600502C07 /* ResponseDeepl.swift */; };
 		1219E8AB278CDAAA00502C07 /* Download+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8AA278CDAAA00502C07 /* Download+Ext.swift */; };
 		1219E8AE278D900B00502C07 /* ViewControllerTranslate+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8AD278D900B00502C07 /* ViewControllerTranslate+Ext.swift */; };
+		1219E8B0278DDBEF00502C07 /* FakeResponseDataTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8AF278DDBEF00502C07 /* FakeResponseDataTranslate.swift */; };
 		1229D37227885DE400EEF1B4 /* WeatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1229D37127885DE400EEF1B4 /* WeatherData.json */; };
 		1229D37627886A5100EEF1B4 /* FakeResponseDataWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1229D37527886A5100EEF1B4 /* FakeResponseDataWeather.swift */; };
 		1229D378278892F100EEF1B4 /* OneFileManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1229D377278892F100EEF1B4 /* OneFileManagerTestCase.swift */; };
@@ -62,6 +63,7 @@
 		1219E8A8278C92B600502C07 /* ResponseDeepl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDeepl.swift; sourceTree = "<group>"; };
 		1219E8AA278CDAAA00502C07 /* Download+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Download+Ext.swift"; sourceTree = "<group>"; };
 		1219E8AD278D900B00502C07 /* ViewControllerTranslate+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewControllerTranslate+Ext.swift"; sourceTree = "<group>"; };
+		1219E8AF278DDBEF00502C07 /* FakeResponseDataTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseDataTranslate.swift; sourceTree = "<group>"; };
 		1229D37127885DE400EEF1B4 /* WeatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherData.json; sourceTree = "<group>"; };
 		1229D37527886A5100EEF1B4 /* FakeResponseDataWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseDataWeather.swift; sourceTree = "<group>"; };
 		1229D377278892F100EEF1B4 /* OneFileManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneFileManagerTestCase.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				1229D37127885DE400EEF1B4 /* WeatherData.json */,
 				1229D37F2789D17C00EEF1B4 /* ResponseDeepl.json */,
 				1229D37527886A5100EEF1B4 /* FakeResponseDataWeather.swift */,
+				1219E8AF278DDBEF00502C07 /* FakeResponseDataTranslate.swift */,
 				1256EE9F2778620B00A39B34 /* URLSessionFake.swift */,
 				1256EE9D27778ED600A39B34 /* FakeResponseDataFixer.swift */,
 			);
@@ -365,6 +368,7 @@
 				1229D378278892F100EEF1B4 /* OneFileManagerTestCase.swift in Sources */,
 				1256EE9E27778ED600A39B34 /* FakeResponseDataFixer.swift in Sources */,
 				1256EEA2277883CC00A39B34 /* DownloadTestCase.swift in Sources */,
+				1219E8B0278DDBEF00502C07 /* FakeResponseDataTranslate.swift in Sources */,
 				1256EEA02778620B00A39B34 /* URLSessionFake.swift in Sources */,
 				1229D37627886A5100EEF1B4 /* FakeResponseDataWeather.swift in Sources */,
 			);
