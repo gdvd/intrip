@@ -32,15 +32,13 @@ class ModelWeather {
         
         Download.shared.downloadWeatherData(lon: weatherCities[0].lon, lat: weatherCities[0].lat) { result in
             switch result {
-            case .Success(response: let resp0):
-                self.weatherCities[0].weather = resp0
+            case .Success(response: let respon):
+                self.weatherCities[0].weather = respon
                 
                 Download.shared.downloadWeatherData(lon: self.weatherCities[1].lon, lat: self.weatherCities[1].lat) { result in
                     switch result {
-                    case .Success(response: let resp1):
-                        print(resp1.current.weather.description)
-                        print(resp1)
-                        self.weatherCities[1].weather = resp1
+                    case .Success(response: let resp):
+                        self.weatherCities[1].weather = resp
                         callBack(.Success)
                     case .Failure(failure: let error):
                         print(error.localizedDescription)

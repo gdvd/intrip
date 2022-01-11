@@ -10,7 +10,7 @@ import Foundation
 class OneFileManager {
     
     public static func ifFileExist(fileName: String) -> Bool{
-        print(documentsDirectory().path + "/" + fileName)
+        //print(documentsDirectory().path + "/" + fileName)
         return FileManager().fileExists(atPath: documentsDirectory().path + "/" + fileName)
     }
       

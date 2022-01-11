@@ -43,12 +43,6 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
         
         textfieldIn.becomeFirstResponder()        
     }
-    private func textViewDidEndEditing(_ textView: UITextView) {
-        if textfieldIn.text.isEmpty {
-            textfieldIn.text = "Placeholder"
-            textfieldIn.textColor = UIColor.lightGray
-        }
-    }
 
     @IBAction func switchAutodetectChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
