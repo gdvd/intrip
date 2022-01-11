@@ -18,6 +18,7 @@ enum ErrorFailure: Error {
     case decodeError
 }
 
+
 class Download {
     
     public static let shared = Download()
@@ -31,6 +32,41 @@ class Download {
         self.session = session
     }
   
+    public func downloadTranslate(textToTranslate: String, langIn: String, langOut: String, autoDetect: Bool, completionHandler: @escaping (Networkresponse<ResponseDeeplData>) -> Void) {
+        
+        var urlStr = Constants.urlApiDeepl
+            .replacingOccurrences(of: Constants.APIkeyPattern, with: ApiKeys.keyDeepl)
+            .replacingOccurrences(of: Constants.textToTranslatePattern, with: textToTranslate.URLEncoded)
+        
+        urlStr = urlStr + langOut
+        
+        if !autoDetect {
+            urlStr = urlStr + Constants.optionSourceLang + langIn
+        }
+        
+        print(urlStr)
+        
+        var request = URLRequest(url: URL(string: urlStr)!)
+        request.httpMethod = "GET"
+        
+        task?.cancel()
+        task = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completionHandler(Networkresponse.Failure(failure: ErrorFailure.returnNil))
+                return
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completionHandler(.Failure(failure: ErrorFailure.statusCodeWrong))
+                return
+            }
+            guard let responseJSON = try? JSONDecoder().decode(ResponseDeepl.self, from: data) else{
+                completionHandler(.Failure(failure: ErrorFailure.decodeError))
+                return
+            }
+            completionHandler(.Success(response: responseJSON.translations[0]))
+        } 
+        task?.resume()
+    }
     
     public func downloadWeatherData(lon: String, lat: String, completionHandler: @escaping (Networkresponse<OpenWeatherMap>) -> Void) {
         let url = URL(string: Constants.urlApiOpenweathermap

@@ -169,7 +169,7 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        exchange.currencies.names.count
+        return exchange.currencies.names.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return exchange.currencies.names[row]

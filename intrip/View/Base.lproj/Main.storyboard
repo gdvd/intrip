@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -143,46 +144,84 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J72-9R-T1a">
-                                        <rect key="frame" x="0.0" y="60" width="374" height="268.66666666666669"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbf-W2-sQH">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="top" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter text" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dLN-kC-v8f">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="268.66666666666669"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" smartDashesType="no"/>
-                                            </textField>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jyn-X7-YyR">
-                                                <rect key="frame" x="274" y="0.0" width="100" height="268.66666666666669"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="eMY-k4-8Qc"/>
-                                                </constraints>
-                                            </pickerView>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AsA-I0-4Up">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                                <segments>
+                                                    <segment title="Auto detect language"/>
+                                                    <segment title="Select"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="switchAutodetectChange:" destination="f5q-pG-FSJ" eventType="valueChanged" id="7Zw-qN-Cai"/>
+                                                </connections>
+                                            </segmentedControl>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Jyn-X7-YyR" secondAttribute="trailing" priority="999" id="tTo-Vf-yQk"/>
+                                            <constraint firstAttribute="height" constant="30" id="Iyf-Hu-vBT"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FdL-Ks-L9O">
-                                        <rect key="frame" x="0.0" y="338.66666666666669" width="374" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="J72-9R-T1a">
+                                        <rect key="frame" x="0.0" y="99.999999999999986" width="374" height="248.66666666666663"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-gT-tKJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="50"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="4m1-85-hNr">
+                                                <rect key="frame" x="0.0" y="0.0" width="299" height="248.66666666666666"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your text here,"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rDv-hS-f8b">
+                                                <rect key="frame" x="304" y="0.0" width="70" height="248.66666666666666"/>
+                                                <subviews>
+                                                    <pickerView tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jyn-X7-YyR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="228"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="f5q-pG-FSJ" id="DaP-ej-K2D"/>
+                                                            <outlet property="delegate" destination="f5q-pG-FSJ" id="hA8-8S-CN5"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lithuanian" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdB-pc-Q2d">
+                                                        <rect key="frame" x="0.0" y="233" width="70" height="15.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="lQ2-Nj-tGJ"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FdL-Ks-L9O">
+                                        <rect key="frame" x="0.0" y="358.66666666666669" width="374" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-gT-tKJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Get translate  ✓"/>
+                                                <state key="normal" title="Get translate  ↓">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="getTranslate:" destination="f5q-pG-FSJ" eventType="touchUpInside" id="XLZ-wG-AaH"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAr-b2-wgv">
-                                                <rect key="frame" x="274" y="0.0" width="100" height="50"/>
+                                                <rect key="frame" x="304" y="0.0" width="70" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="QcG-wy-Nzx"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="QcG-wy-Nzx"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="↓↑"/>
+                                                <state key="normal" title="↓↑">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="reverse:" destination="f5q-pG-FSJ" eventType="touchUpInside" id="Xur-R9-Z57"/>
                                                 </connections>
@@ -192,20 +231,37 @@
                                             <constraint firstAttribute="height" constant="50" id="ldu-Ny-Wfe"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WNv-GS-Tw2">
-                                        <rect key="frame" x="0.0" y="398.66666666666674" width="374" height="268.33333333333326"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WNv-GS-Tw2">
+                                        <rect key="frame" x="0.0" y="418.66666666666669" width="374" height="248.33333333333331"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="anO-UP-0Jr">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="268.33333333333331"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyR-wX-bsv">
-                                                <rect key="frame" x="274" y="0.0" width="100" height="268.33333333333331"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aZ6-Eh-UK3">
+                                                <rect key="frame" x="0.0" y="0.0" width="299" height="248.33333333333334"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5yF-09-Ju0">
+                                                <rect key="frame" x="304" y="0.0" width="70" height="248.33333333333334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulgarian" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVp-9A-Vqe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="15.666666666666666"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyR-wX-bsv">
+                                                        <rect key="frame" x="0.0" y="20.666666666666615" width="70" height="227.66666666666663"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="f5q-pG-FSJ" id="Q1S-Rp-ZeW"/>
+                                                            <outlet property="delegate" destination="f5q-pG-FSJ" id="3Rb-iR-sVc"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" priority="999" constant="100" id="tCY-y1-sMH"/>
+                                                    <constraint firstAttribute="width" constant="70" id="u9j-7p-Gch"/>
                                                 </constraints>
-                                            </pickerView>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -229,8 +285,11 @@
                         <outlet property="buttonReverse" destination="gAr-b2-wgv" id="oaM-0a-nuX"/>
                         <outlet property="pickerViewIn" destination="Jyn-X7-YyR" id="TAQ-g0-nJQ"/>
                         <outlet property="pickerViewOut" destination="hyR-wX-bsv" id="kL4-IO-w7V"/>
-                        <outlet property="textFieldOut" destination="anO-UP-0Jr" id="aMf-cV-i2H"/>
-                        <outlet property="textfieldIn" destination="dLN-kC-v8f" id="rV0-UQ-A4E"/>
+                        <outlet property="switchAutodetect" destination="AsA-I0-4Up" id="fcE-R3-BoB"/>
+                        <outlet property="textFieldOut" destination="aZ6-Eh-UK3" id="R2N-lu-FH6"/>
+                        <outlet property="textfieldIn" destination="4m1-85-hNr" id="uJk-aI-ubh"/>
+                        <outlet property="textfieldLangIn" destination="HdB-pc-Q2d" id="WrP-fk-5Dp"/>
+                        <outlet property="textfieldLangOut" destination="GVp-9A-Vqe" id="x1q-in-Cru"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIf-4L-dML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -392,7 +451,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                         <tabBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            <color key="backgroundColor" name="AccentColor"/>
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
@@ -410,11 +469,14 @@
         <image name="exchange" width="48" height="32"/>
         <image name="translate" width="32" height="32"/>
         <image name="weather" width="32" height="32"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
