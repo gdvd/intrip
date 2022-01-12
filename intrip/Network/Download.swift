@@ -35,7 +35,6 @@ class Download {
     public func downloadTranslate(textToTranslate: String, langIn: String, langOut: String, autoDetect: Bool, completionHandler: @escaping (Networkresponse<ResponseDeeplData>) -> Void) {
         
         var urlStr = Constants.urlApiDeepl
-            .replacingOccurrences(of: Constants.APIkeyPattern, with: ApiKeys.keyDeepl)
             .replacingOccurrences(of: Constants.textToTranslatePattern, with: textToTranslate.URLEncoded)
         
         urlStr = urlStr + langOut
@@ -68,7 +67,6 @@ class Download {
     
     public func downloadWeatherData(lon: String, lat: String, completionHandler: @escaping (Networkresponse<OpenWeatherMap>) -> Void) {
         let url = URL(string: Constants.urlApiOpenweathermap
-                        .replacingOccurrences(of: Constants.APIkeyPattern, with: ApiKeys.keyOpenWeather)
                         .replacingOccurrences(of: Constants.latOpenweathermapPattern, with: lat)
                         .replacingOccurrences(of: Constants.lonOpenweathermapPattern, with: lon))
         var request = URLRequest(url: url!)
@@ -94,7 +92,7 @@ class Download {
     }
     
     public func downloadRatesWithFixer(completionHandler: @escaping (Networkresponse<ItemFixer>) -> Void) {
-        let url = URL(string: (Constants.urlApiFixer.replacingOccurrences(of: Constants.APIkeyPattern, with: ApiKeys.keyFixer)))!
+        let url = URL(string: Constants.urlApiFixer)!
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

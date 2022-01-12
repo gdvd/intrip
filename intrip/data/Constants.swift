@@ -7,34 +7,33 @@
 
 import Foundation
 
-struct Constants {
+enum Constants {
     
     // Exchange with Fixer
-    public static let urlApiFixer = "http://data.fixer.io/api/latest?access_key={APIkey}&format=1&base=EUR"
-    public static let fileNameExchangeFixer = "Fixer.plist"
-    public static let APIkeyPattern = "{APIkey}"
-    public static let formatDateFixer = "yyyy-MM-dd"
-    public static let exchangeStrDefaultIn = "EUR"
-    public static let exchangeStrDefaultOut = "USD"
+    static let urlApiFixer = "http://data.fixer.io/api/latest?access_key=\(ApiKeys.keyFixer)&format=1&base=EUR"
+    static let fileNameExchangeFixer = "Fixer.plist"
+    static let formatDateFixer = "yyyy-MM-dd"
+    static let exchangeStrDefaultIn = "EUR"
+    static let exchangeStrDefaultOut = "USD"
     
     // Translate
-    public static let urlApiDeepl = "https://api-free.deepl.com/v2/translate?auth_key={APIkey}&text={textToTranslate}&target_lang="
-    public static let optionSourceLang = "&source_lang="
-    public static let textToTranslatePattern = "{textToTranslate}"
+    static let urlApiDeepl = "https://api-free.deepl.com/v2/translate?auth_key=\(ApiKeys.keyDeepl)&text={textToTranslate}&target_lang="
+    static let optionSourceLang = "&source_lang="
+    static let textToTranslatePattern = "{textToTranslate}"
     
     // Weather
-    public static let urlApiOpenweathermap = "https://api.openweathermap.org/data/2.5/onecall?lat={Lat}&lon={Lon}&exclude=hourly,daily&appid={APIkey}&units=metric&lang=fr"
-    public static let latOpenweathermapPattern = "{Lat}"
-    public static let lonOpenweathermapPattern = "{Lon}"
+    static let urlApiOpenweathermap = "https://api.openweathermap.org/data/2.5/onecall?lat={Lat}&lon={Lon}&exclude=hourly,daily&appid=\(ApiKeys.keyOpenWeather)&units=metric&lang=fr"
+    static let latOpenweathermapPattern = "{Lat}"
+    static let lonOpenweathermapPattern = "{Lon}"
     
-    public static let idParis = 6455259
-    public static let latParis = "48.856461"
-    public static let lonParis = "2.35236"
-    public static let cityNameParis = "Paris, fr"
+    static let idParis = 6455259
+    static let latParis = "48.856461"
+    static let lonParis = "2.35236"
+    static let cityNameParis = "Paris, fr"
     
-    public static let latNewYork = "40.714272"
-    public static let lonNewYork = "-74.005966"
-    public static let cityNameNewYork = "New York City, us"
-    public static let idNewYork = 5128581
+    static let latNewYork = "40.714272"
+    static let lonNewYork = "-74.005966"
+    static let cityNameNewYork = "New York City, us"
+    static let idNewYork = 5128581
     
 }

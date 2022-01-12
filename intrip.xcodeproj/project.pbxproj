@@ -137,15 +137,15 @@
 		120FF5AB276CE3F3008BED80 /* intrip */ = {
 			isa = PBXGroup;
 			children = (
-				120FF5AC276CE3F3008BED80 /* AppDelegate.swift */,
 				1219E8AC278D7C3500502C07 /* Files */,
 				12638DAE2771103800631D6B /* Network */,
 				12638D79276FD00F00631D6B /* Model */,
 				12638D77276F318800631D6B /* Controller */,
 				12638D78276F319900631D6B /* View */,
-				120FF5B5276CE3F4008BED80 /* Assets.xcassets */,
 				12638DAB2771100500631D6B /* data */,
+				120FF5AC276CE3F3008BED80 /* AppDelegate.swift */,
 				120FF5BA276CE3F4008BED80 /* Info.plist */,
+				120FF5B5276CE3F4008BED80 /* Assets.xcassets */,
 			);
 			path = intrip;
 			sourceTree = "<group>";
@@ -157,8 +157,8 @@
 				1229D377278892F100EEF1B4 /* OneFileManagerTestCase.swift */,
 				1273DD6F278EDAD20049FCFA /* ModelWeatherTestCase.swift */,
 				1273DD71278EDAED0049FCFA /* ModelExchangeTestCase.swift */,
-				1229D3792788B0A600EEF1B4 /* CurrenciesTestCase.swift */,
 				1273DD6D278EDAB00049FCFA /* ModelTranslateTestCase.swift */,
+				1229D3792788B0A600EEF1B4 /* CurrenciesTestCase.swift */,
 				1256EE9B27778E6A00A39B34 /* Fixer.json */,
 				1229D37127885DE400EEF1B4 /* WeatherData.json */,
 				1229D37F2789D17C00EEF1B4 /* ResponseDeepl.json */,

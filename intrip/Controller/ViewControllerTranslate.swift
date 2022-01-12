@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
 
     @IBOutlet weak var textfieldIn: UITextView!    
     @IBOutlet weak var textFieldOut: UITextView!
@@ -42,32 +42,7 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
         
         initPickers()
         
-        textfieldIn.becomeFirstResponder()        
-    }
-    
-    @IBAction func actionResetText(_ sender: UIButton) {
-        textfieldIn.text?.removeAll()
-        textFieldOut.text?.removeAll()
-    }
-
-    @IBAction func switchAutodetectChange(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            pickerViewIn.isUserInteractionEnabled = false
-            pickerViewIn.alpha = 0.25
-        } else {
-            pickerViewIn.isUserInteractionEnabled = true
-            pickerViewIn.alpha = 1
-        }
-    }
-    func getSelectedLanguages() -> (langIn: String, langOut:String) {
-        let pi = pickerViewIn.selectedRow(inComponent: 0)
-        let po = pickerViewOut.selectedRow(inComponent: 0)
-        return (langIn: translate.getLangInLanguage(pos: pi), langOut: translate.getLangInLanguage(pos:po))
-    }
-    func getCodeSelectedLanguages() -> (langIn: String, langOut:String) {
-        let pi = pickerViewIn.selectedRow(inComponent: 0)
-        let po = pickerViewOut.selectedRow(inComponent: 0)
-        return (langIn: translate.getCodeInLanguage(pos: pi), langOut: translate.getCodeInLanguage(pos:po))
+        textfieldIn.becomeFirstResponder()
     }
 
     
@@ -105,6 +80,33 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
+    @IBAction func actionResetText(_ sender: UIButton) {
+        textfieldIn.text?.removeAll()
+        textFieldOut.text?.removeAll()
+    }
+
+    @IBAction func switchAutodetectChange(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            pickerViewIn.isUserInteractionEnabled = false
+            pickerViewIn.alpha = 0.25
+        } else {
+            pickerViewIn.isUserInteractionEnabled = true
+            pickerViewIn.alpha = 1
+        }
+    }
+    
+    func getSelectedLanguages() -> (langIn: String, langOut:String) {
+        let pi = pickerViewIn.selectedRow(inComponent: 0)
+        let po = pickerViewOut.selectedRow(inComponent: 0)
+        return (langIn: translate.getLangInLanguage(pos: pi), langOut: translate.getLangInLanguage(pos:po))
+    }
+    
+    func getCodeSelectedLanguages() -> (langIn: String, langOut:String) {
+        let pi = pickerViewIn.selectedRow(inComponent: 0)
+        let po = pickerViewOut.selectedRow(inComponent: 0)
+        return (langIn: translate.getCodeInLanguage(pos: pi), langOut: translate.getCodeInLanguage(pos:po))
+    }
+    
     func showResponse(response: String){
         DispatchQueue.main.async {
             self.textFieldOut.text = response
@@ -128,18 +130,16 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func initPickers(){
         if translate.languages.count > 0 {
-            //DispatchQueue.main.async { [self] in 
-                let posLangIn = translate.getPosInLanguage(lan: "FR")
-                if posLangIn >= 0 {
-                        pickerViewIn.selectRow(posLangIn, inComponent: 0, animated: true)
-                    textfieldLangIn.text = translate.languages[posLangIn].lang
-                }
-                let posLangOut = translate.getPosInLanguage(lan: "EN")
-                if posLangOut >= 0 {
-                        pickerViewOut.selectRow(posLangOut, inComponent: 0, animated: true)
-                    textfieldLangOut.text = translate.languages[posLangOut].lang
-                }
-            //}
+            let posLangIn = translate.getPosInLanguage(lan: "FR")
+            if posLangIn >= 0 {
+                pickerViewIn.selectRow(posLangIn, inComponent: 0, animated: true)
+                textfieldLangIn.text = translate.languages[posLangIn].lang
+            }
+            let posLangOut = translate.getPosInLanguage(lan: "EN")
+            if posLangOut >= 0 {
+                pickerViewOut.selectRow(posLangOut, inComponent: 0, animated: true)
+                textfieldLangOut.text = translate.languages[posLangOut].lang
+            }
         }
     }
     private func updateLabelLanguages() {
