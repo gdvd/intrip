@@ -50,7 +50,7 @@ class ViewControllerWeather: UIViewController {
     private func updateValuesCity() {
         DispatchQueue.main.async { [self] in
             labelNameCity1.text = modelWeather.weatherCities[0].cityName!
-            labelTempCity1.text = modelWeather.weatherCities[0].weather!.current.temp.description + "°c"
+            labelTempCity1.text = entireValue(doubleInStr: modelWeather.weatherCities[0].weather!.current.temp.description) + "°c"
             labelDetailCity1.text = modelWeather.weatherCities[0].weather!.current.weather[0].description
             labelWeatherMain1.text = modelWeather.weatherCities[0].weather!.current.weather[0].main
             let nameIcon1 = modelWeather.weatherCities[0].weather!.current.weather[0].icon
@@ -70,7 +70,7 @@ class ViewControllerWeather: UIViewController {
             labelHour12.text = convertTimeInDoubleToString(double: modelWeather.weatherCities[0].weather!.current.sunset + Double(modelWeather.weatherCities[0].weather!.timezone_offset))
             
             labelNameCity2.text = modelWeather.weatherCities[1].cityName!
-            labelTempCity2.text = modelWeather.weatherCities[1].weather!.current.temp.description + "°c"
+            labelTempCity2.text = entireValue(doubleInStr: modelWeather.weatherCities[1].weather!.current.temp.description) + "°c"
             labelDetailCity2.text = modelWeather.weatherCities[1].weather!.current.weather[0].description
             labelWeatherMain2.text = modelWeather.weatherCities[1].weather!.current.weather[0].main
             let nameIcon2 = modelWeather.weatherCities[1].weather!.current.weather[0].icon
@@ -88,6 +88,12 @@ class ViewControllerWeather: UIViewController {
             labelHour21.text = convertTimeInDoubleToString(double: modelWeather.weatherCities[1].weather!.current.sunrise + Double(modelWeather.weatherCities[1].weather!.timezone_offset))
             labelHour22.text = convertTimeInDoubleToString(double: modelWeather.weatherCities[1].weather!.current.sunset + Double(modelWeather.weatherCities[1].weather!.timezone_offset))
         }
+    }
+    
+    private func entireValue(doubleInStr: String) -> String {
+        var res = String(doubleInStr.split(separator: ".")[0])
+        if res == "-0" { res = "0"}
+        return res
     }
     
     func convertTimeInDoubleToString(double: Double) -> String {

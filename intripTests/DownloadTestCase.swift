@@ -16,7 +16,18 @@ class DownloadTestCase: XCTestCase {
     func testDownloadtranslateWithTranslateShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
         
     }
-    
+    func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfDataNil(){
+        
+    }
+    func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfError(){
+        
+    }
+    func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfResponseKO(){
+        
+    }
+    func testDownloadranslateWithTranslateShouldGetFailureCallbackIfIncorrectData(){
+        
+    }
     
     //MARK: - Weather
     func testDownloadweatherWithWeatherShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
@@ -105,7 +116,7 @@ class DownloadTestCase: XCTestCase {
     }
     
     
-    func testDownloadweatherWithWeatherShouldGetFailureCallbackIf2(){
+    func testDownloadweatherWithWeatherShouldGetFailureCallbackIfResponseKO(){
         // Given
         let download = Download(
             session:URLSessionFake(data: FakeResponseDataWeather.downloadCorrectDataWeather, 
@@ -132,7 +143,7 @@ class DownloadTestCase: XCTestCase {
         }
     }
     
-    func testDownloadweatherWithWeatherShouldGetFailureCallbackIf3(){
+    func testDownloadweatherWithWeatherShouldGetFailureCallbackIfIncorrectDataFixer(){
         // Given
         let download = Download(
             session:URLSessionFake(data: FakeResponseDataWeather.downloadIncorrectDataFixer, 
