@@ -44,6 +44,11 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
         
         textfieldIn.becomeFirstResponder()        
     }
+    
+    @IBAction func actionResetText(_ sender: UIButton) {
+        textfieldIn.text?.removeAll()
+        textFieldOut.text?.removeAll()
+    }
 
     @IBAction func switchAutodetectChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -110,12 +115,6 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
         view.endEditing(true)
     }
     
-    @IBAction func actionResetText(_ sender: UIButton) {
-            print("actionResetText")
-            textfieldLangIn.text?.removeAll()
-            textfieldLangOut.text?.removeAll()
-    }
-    
     //MARK: - pickerView
     @IBAction func reverse(_ sender: UIButton) {
         let pi = pickerViewIn.selectedRow(inComponent: 0)
@@ -129,18 +128,18 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func initPickers(){
         if translate.languages.count > 0 {
-            DispatchQueue.main.async { [self] in 
+            //DispatchQueue.main.async { [self] in 
                 let posLangIn = translate.getPosInLanguage(lan: "FR")
                 if posLangIn >= 0 {
-                        self.pickerViewIn.selectRow(posLangIn, inComponent: 0, animated: true)
+                        pickerViewIn.selectRow(posLangIn, inComponent: 0, animated: true)
                     textfieldLangIn.text = translate.languages[posLangIn].lang
                 }
                 let posLangOut = translate.getPosInLanguage(lan: "EN")
                 if posLangOut >= 0 {
-                        self.pickerViewOut.selectRow(posLangOut, inComponent: 0, animated: true)
+                        pickerViewOut.selectRow(posLangOut, inComponent: 0, animated: true)
                     textfieldLangOut.text = translate.languages[posLangOut].lang
                 }
-            }
+            //}
         }
     }
     private func updateLabelLanguages() {

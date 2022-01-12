@@ -43,9 +43,7 @@ class Download {
         if !autoDetect {
             urlStr = urlStr + Constants.optionSourceLang + langIn
         }
-        
-        print(urlStr)
-        
+                
         var request = URLRequest(url: URL(string: urlStr)!)
         request.httpMethod = "GET"
         

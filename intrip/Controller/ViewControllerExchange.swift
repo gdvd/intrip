@@ -49,9 +49,6 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     private func showError(msg: String){
-        DispatchQueue.main.async { 
-            self.msg.text = msg
-        }
         let alertVC = UIAlertController(title: "Impossible", message: msg, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
@@ -60,15 +57,11 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         let posIn = exchange.currencies.getPosOfNameExchange(nameExchange: Constants.exchangeStrDefaultIn)
         if posIn >= 0 {
-            DispatchQueue.main.async { 
-                self.currencyPickerViewIn.selectRow(posIn, inComponent: 0, animated: true)
-            }
+                currencyPickerViewIn.selectRow(posIn, inComponent: 0, animated: true)
         }
         let posOut = exchange.currencies.getPosOfNameExchange(nameExchange: Constants.exchangeStrDefaultOut)
         if posOut >= 0 {
-            DispatchQueue.main.async { 
-                self.currencyPickerViewOut.selectRow(posOut, inComponent: 0, animated: true)
-            }
+                currencyPickerViewOut.selectRow(posOut, inComponent: 0, animated: true)
         }
     }
     private func updateData(msg: String){
@@ -107,10 +100,8 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     private func setValues(curIn: String, curOut: String){
-        DispatchQueue.main.async {
-            self.moneyIn.text = curIn
-            self.moneyOut.text = curOut
-        }
+            moneyIn.text = curIn
+            moneyOut.text = curOut
     }
     private func reformatStrWithRate(numberStr: String) -> String {
         if !numberStr.contains("e") {
@@ -144,11 +135,8 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     private func resetValues(){
-        DispatchQueue.main.async {
-            self.moneyIn.text = "0"
-            self.moneyOut.text = "0"
-            
-        }
+            moneyIn.text = "0"
+            moneyOut.text = "0"
     }
     
     //MARK: - pickerView
