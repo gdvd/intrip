@@ -14,19 +14,29 @@ class DownloadTestCase: XCTestCase {
     
     //MARK: - Translate
     func testDownloadtranslateWithTranslateShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
-        
+        //Given
+        //When
+        //Then
     }
     func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfDataNil(){
-        
+        //Given
+        //When
+        //Then
     }
     func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfError(){
-        
+        //Given
+        //When
+        //Then
     }
     func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfResponseKO(){
-        
+        //Given
+        //When
+        //Then
     }
     func testDownloadranslateWithTranslateShouldGetFailureCallbackIfIncorrectData(){
-        
+        //Given
+        //When
+        //Then
     }
     
     //MARK: - Weather

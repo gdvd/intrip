@@ -24,6 +24,7 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var switchAutodetect: UISegmentedControl!
     
+    @IBOutlet weak var buttonResetText: UIButton!
     
     private var translate: ModelTranslate!
     
@@ -109,6 +110,11 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
         view.endEditing(true)
     }
     
+    @IBAction func actionResetText(_ sender: UIButton) {
+            print("actionResetText")
+            textfieldLangIn.text?.removeAll()
+            textfieldLangOut.text?.removeAll()
+    }
     
     //MARK: - pickerView
     @IBAction func reverse(_ sender: UIButton) {
