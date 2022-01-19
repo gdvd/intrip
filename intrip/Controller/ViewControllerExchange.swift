@@ -55,13 +55,17 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     private func setupPickerviewsWithDefaultValues(){
         
-        let posIn = exchange.currencies.getPosOfNameExchange(nameExchange: Constants.exchangeStrDefaultIn)
+        let posIn = exchange.currencies.getPosOfNameExchange(nameExchange: SaveInUserDefault.currencyIn)
         if posIn >= 0 {
-                currencyPickerViewIn.selectRow(posIn, inComponent: 0, animated: true)
+            DispatchQueue.main.async {
+                self.currencyPickerViewIn.selectRow(posIn, inComponent: 0, animated: true)
+            }
         }
-        let posOut = exchange.currencies.getPosOfNameExchange(nameExchange: Constants.exchangeStrDefaultOut)
+        let posOut = exchange.currencies.getPosOfNameExchange(nameExchange: SaveInUserDefault.currencyOut)
         if posOut >= 0 {
-                currencyPickerViewOut.selectRow(posOut, inComponent: 0, animated: true)
+            DispatchQueue.main.async {
+                self.currencyPickerViewOut.selectRow(posOut, inComponent: 0, animated: true)
+            }
         }
     }
     private func updateData(msg: String){
@@ -135,8 +139,10 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     private func resetValues(){
+        DispatchQueue.main.async { [self] in
             moneyIn.text = "0"
             moneyOut.text = "0"
+        }
     }
     
     //MARK: - pickerView
@@ -144,11 +150,13 @@ class ViewControllerExchange: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         if pickerView.tag == 1 {
             if let value = moneyIn.text {
+                SaveInUserDefault.currencyIn = exchange.currencies.names[pickerView.selectedRow(inComponent: 0)]
                 inChange(valTxt: value)
             }
         }
         if pickerView.tag == 2 {
             if let value = moneyOut.text {
+                SaveInUserDefault.currencyOut = exchange.currencies.names[pickerView.selectedRow(inComponent: 0)]
                 outChange(valTxt: value)
             }
         }        

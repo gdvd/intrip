@@ -12,4 +12,8 @@ import XCTest
 
 class ModelTranslateTestCase: XCTestCase {
     
+    func testGetposinlanguageWhenGivenIntShouldbeString(){
+        
+    }
+    
 }

@@ -24,12 +24,12 @@ class FakeResponseDataTranslate {
     let errorDownload = DownloadError()
     
     
-    static var downloadCorrectDataWeather: Data {
+    static var downloadCorrectDataTranslate: Data {
         let bundle = Bundle(for: FakeResponseDataTranslate.self)
-        let url = bundle.url(forResource: "ResponseDeepl", withExtension: "json")
+        let url = bundle.url(forResource: "DeeplData", withExtension: "json")
         let data = try! Data(contentsOf: url!)
         return data
     }
     
-    static let downloadIncorrectDataFixer = "erreur".data(using: .utf8)!
+    static let downloadIncorrectDataTranslate = "erreur".data(using: .utf8)!
 }

@@ -19,6 +19,12 @@ class ModelWeather {
         weatherCities.append(contentsOf: [cityOne(), cityTwo()])
     }
     
+    // 4 XCTest
+    private var download = Download.shared
+    init(download: Download){
+        self.download = download
+    }
+    
     public var weatherCities: [WeatherCity] = []
     
     private func cityOne() -> WeatherCity {
@@ -30,12 +36,12 @@ class ModelWeather {
     
     public func updateWeather(callBack: @escaping(ResponseWeather) -> Void){
         
-        Download.shared.downloadWeatherData(lon: weatherCities[0].lon, lat: weatherCities[0].lat) { result in
+        download.downloadWeatherData(lon: weatherCities[0].lon, lat: weatherCities[0].lat) { result in
             switch result {
             case .Success(response: let respon):
                 self.weatherCities[0].weather = respon
                 
-                Download.shared.downloadWeatherData(lon: self.weatherCities[1].lon, lat: self.weatherCities[1].lat) { result in
+                self.download.downloadWeatherData(lon: self.weatherCities[1].lon, lat: self.weatherCities[1].lat) { result in
                     switch result {
                     case .Success(response: let resp):
                         self.weatherCities[1].weather = resp

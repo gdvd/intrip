@@ -15,28 +15,153 @@ class DownloadTestCase: XCTestCase {
     //MARK: - Translate
     func testDownloadtranslateWithTranslateShouldGetSuccessCallbackIfNoErrorAndCorrectData(){
         //Given
+        let download = Download(
+            session:URLSessionFake(data: FakeResponseDataTranslate.downloadCorrectDataTranslate, 
+                                   response: FakeResponseDataTranslate.responseOK,
+                                   error: nil))
         //When
+        let textToTranslate = "Bonjour, le monde"
+        let langIn = "FR"
+        let langOut = "EN"
+        let autoDetect = false
+        
+        let responseTextEn = "Hello, the world"
         //Then
+        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+            switch networkresp {
+            case .Success(response: let response):
+                XCTAssertEqual(responseTextEn, response.text)
+            case .Failure(let errorFailure):
+                switch errorFailure {
+                case .returnNil:
+                    XCTAssert(false)
+                case .statusCodeWrong:
+                    XCTAssert(false)
+                case .decodeError:
+                    XCTAssert(false)
+                }
+            }
+        }
     }
     func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfDataNil(){
         //Given
+        let download = Download(
+            session:URLSessionFake(data: nil, 
+                                   response: FakeResponseDataTranslate.responseOK,
+                                   error: nil))
         //When
+        let textToTranslate = "Bonjour, le monde"
+        let langIn = "FR"
+        let langOut = "EN"
+        let autoDetect = false
+        
+//        let responseTextEn = "Hello, the world"
         //Then
+        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+            switch networkresp {
+            case .Success(_):
+                XCTAssert(false)
+            case .Failure(let errorFailure):
+                switch errorFailure {
+                case .returnNil:
+                    XCTAssert(true)
+                case .statusCodeWrong:
+                    XCTAssert(false)
+                case .decodeError:
+                    XCTAssert(false)
+                }
+            }
+        }
     }
     func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfError(){
         //Given
+        let download = Download(
+            session:URLSessionFake(data: FakeResponseDataTranslate.downloadCorrectDataTranslate, 
+                                   response: FakeResponseDataTranslate.responseOK,
+                                   error: FakeResponseDataTranslate.DownloadError.init()))
         //When
+        let textToTranslate = "Bonjour, le monde"
+        let langIn = "FR"
+        let langOut = "EN"
+        let autoDetect = false
+        
+//        let responseTextEn = "Hello, the world"
         //Then
+        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+            switch networkresp {
+            case .Success(_):
+                XCTAssert(false)
+            case .Failure(let errorFailure):
+                switch errorFailure {
+                case .returnNil:
+                    XCTAssert(true)
+                case .statusCodeWrong:
+                    XCTAssert(false)
+                case .decodeError:
+                    XCTAssert(false)
+                }
+            }
+        }
     }
     func testDownloadtranslateWithTranslateShouldGetFailureCallbackIfResponseKO(){
         //Given
+        let download = Download(
+            session:URLSessionFake(data: FakeResponseDataTranslate.downloadCorrectDataTranslate, 
+                                   response: FakeResponseDataTranslate.responseKO,
+                                   error: nil))
         //When
+        let textToTranslate = "Bonjour, le monde"
+        let langIn = "FR"
+        let langOut = "EN"
+        let autoDetect = false
+        
+//        let responseTextEn = "Hello, the world"
         //Then
+        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+            switch networkresp {
+            case .Success(_):
+                XCTAssert(false)
+            case .Failure(let errorFailure):
+                switch errorFailure {
+                case .returnNil:
+                    XCTAssert(false)
+                case .statusCodeWrong:
+                    XCTAssert(true)
+                case .decodeError:
+                    XCTAssert(false)
+                }
+            }
+        }
     }
     func testDownloadranslateWithTranslateShouldGetFailureCallbackIfIncorrectData(){
         //Given
+        let download = Download(
+            session:URLSessionFake(data: FakeResponseDataTranslate.downloadIncorrectDataTranslate, 
+                                   response: FakeResponseDataTranslate.responseOK,
+                                   error: nil))
         //When
+        let textToTranslate = "Bonjour, le monde"
+        let langIn = "FR"
+        let langOut = "EN"
+        let autoDetect = false
+        
+//        let responseTextEn = "Hello, the world"
         //Then
+        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+            switch networkresp {
+            case .Success(_):
+                XCTAssert(false)
+            case .Failure(let errorFailure):
+                switch errorFailure {
+                case .returnNil:
+                    XCTAssert(false)
+                case .statusCodeWrong:
+                    XCTAssert(false)
+                case .decodeError:
+                    XCTAssert(true)
+                }
+            }
+        }
     }
     
     //MARK: - Weather
@@ -70,7 +195,6 @@ class DownloadTestCase: XCTestCase {
             }
         }
     }
-    
     func testDownloadweatherWithWeatherShouldGetFailureCallbackIfDataNil(){
         // Given
         let download = Download(
@@ -84,7 +208,7 @@ class DownloadTestCase: XCTestCase {
             // Then
             switch networkresp {
             case .Success(_):
-                XCTAssert(false)            
+                XCTAssert(false)    
             case .Failure(let errorFailure):
                 switch errorFailure {
                 case .returnNil:
@@ -97,7 +221,6 @@ class DownloadTestCase: XCTestCase {
             }
         }
     }
-    
     func testDownloadweatherWithWeatherShouldGetFailureCallbackIfError(){
         // Given
         let download = Download(
@@ -124,8 +247,6 @@ class DownloadTestCase: XCTestCase {
             }
         }
     }
-    
-    
     func testDownloadweatherWithWeatherShouldGetFailureCallbackIfResponseKO(){
         // Given
         let download = Download(
