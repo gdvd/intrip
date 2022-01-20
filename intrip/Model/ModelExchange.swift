@@ -4,7 +4,7 @@
 //
 //  Created by Gilles David on 20/12/2021.
 //
-
+import os.log
 import Foundation
 
 enum ResponseData {
@@ -19,30 +19,40 @@ enum returnValues {
 class ModelExchange {
     
     public static let shared = ModelExchange()
-    private init() { }
+    private init() { 
+        self.currencies = Currencies()
+    }
+    public var currencies: Currencies
+    public var oneFileManager = OneFileManager()
     
-    public var currencies = Currencies()
-    public var exchangeIn = Constants.exchangeStrDefaultIn
-    public var exchangeOut = Constants.exchangeStrDefaultOut
+    // 4 XCTest
+    init(currencyFake: Currencies) {
+        self.currencies = currencyFake
+    }
+    private var download = Download.shared
+    init(currencyFake: Currencies, download: Download, oneFileManager: OneFileManager){
+        self.download = download
+        self.currencies = currencyFake
+        self.oneFileManager = oneFileManager
+    }
     
     
     public func getLastValues(callback: @escaping(ResponseData) -> Void ) {
         
-        if OneFileManager.ifFileExist(fileName: Constants.fileNameExchangeFixer) { 
-            let itemFixerOnDisk = OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
-            
-            if ifTodayIsSameSameOf(dateStr: itemFixerOnDisk.date) {
+        if oneFileManager.ifFileExist(fileName: Constants.fileNameExchangeFixer) { 
+            let itemFixerOnDisk = oneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
+            if oneFileManager.ifTodayIsSameSameOf(dateStr: itemFixerOnDisk.date) {
                 // File Exist - Same Date -> show them
-                currencies.initWithDictAndSort((OneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)).rates)
+                currencies.initWithDictAndSort((oneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)).rates)
                 callback( .Success)
             } else {
                 // File Exist - No same Date -> Reload
-                Download.shared.downloadRatesWithFixer { result in
+                download.downloadRatesWithFixer { result in
                     switch result {
                     case .Success(response: let response):
                         // Download new values ok
                         self.currencies.initWithDictAndSort(response.rates)
-                        OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
+                        self.oneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
                         callback( .Success)
                     case .Failure(failure: _):
                         // Download new values failed -> we will work with old values
@@ -53,11 +63,11 @@ class ModelExchange {
             }
         } else { 
             // No File Exist
-            Download.shared.downloadRatesWithFixer { result in
+            download.downloadRatesWithFixer { result in
                 switch result {
                 case .Success(response: let response):
                     self.currencies.initWithDictAndSort(response.rates)
-                    OneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
+                    self.oneFileManager.saveChecklistItemsFixer(fileName: Constants.fileNameExchangeFixer, itemToSave: response)
                     callback( .Success)
                 case .Failure(failure: let error):
                     callback( .Failure(failure: error))
@@ -99,11 +109,6 @@ class ModelExchange {
         return myDouble
     }
     
-    private func ifTodayIsSameSameOf(dateStr : String) -> Bool {
-        let date = Date()
-        let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
-        return dateWithFormat == dateStr
-    }
     private func verifyIfDataExist() -> Bool {
         return currencies.names.count > 0
     }

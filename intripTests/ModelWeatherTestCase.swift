@@ -15,11 +15,7 @@ class ModelWeatherTestCase: XCTestCase {
     public var modelWeather = ModelWeather.shared
     
     func testUpdateweatherWhenDataIsOkResponseSuccess(){
-        let modelWeather = ModelWeather.init(download: FakeDownload.init())
-//        _ = Download(
-//            session:URLSessionFake(data: FakeResponseDataTranslate.downloadCorrectDataTranslate, 
-//                                   response: FakeResponseDataTranslate.responseOK,
-//                                   error: nil))
+        let modelWeather = ModelWeather(download: FakeDownload(witchCase: .success))
         modelWeather.updateWeather { responseWeather in
             switch responseWeather {
             case .Success:
@@ -31,10 +27,7 @@ class ModelWeatherTestCase: XCTestCase {
     }
     
     func testUpdateweatherWhenDataIsKO(){
-//        _ = Download(
-//            session:URLSessionFake(data: FakeResponseDataTranslate.downloadCorrectDataTranslate, 
-//                                   response: FakeResponseDataTranslate.responseKO,
-//                                   error: nil))
+        let modelWeather = ModelWeather(download: FakeDownload(witchCase: .failure))
         modelWeather.updateWeather { responseWeather in
             switch responseWeather {
             case .Success:

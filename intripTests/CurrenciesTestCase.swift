@@ -27,7 +27,7 @@ class CurrenciesTestCase: XCTestCase {
         // ItemFixer is loaded ?
         XCTAssertEqual(itemToSave.date, "2022-01-07")
         
-        var currency = Currencies()
+        let currency = Currencies()
         currency.initWithDictAndSort(itemToSave.rates)
         XCTAssertTrue(currency.names.count > 0)
         XCTAssertEqual(currency.names.count, currency.values.count)

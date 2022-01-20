@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currencies {
+class Currencies {
     
     init() {
         names = []
@@ -17,7 +17,7 @@ struct Currencies {
     public var names: [String]
     public var values: [Double]
     
-    public mutating func initWithDictAndSort(_ dict: Dictionary<String, Double>) {
+    public func initWithDictAndSort(_ dict: Dictionary<String, Double>) {
         reset()
         let sortedArray = dict.sorted( by: { $0.0 < $1.0 })
         for (key, value) in sortedArray {
@@ -25,7 +25,7 @@ struct Currencies {
             values.append(value)
         }
     }
-    private mutating func reset() {
+    private func reset() {
         names = []
         values = []
     }
@@ -40,7 +40,11 @@ struct Currencies {
         if let pos = names.enumerated().first(where: {$0.element.lowercased() == nameExchange.lowercased()}) {
             return pos.offset
         } else {
-           return -1
+            if names.count > 0 {
+                return 1
+            } else {
+                return -1
+            }
         }
     }
 }

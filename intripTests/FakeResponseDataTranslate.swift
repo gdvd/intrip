@@ -21,7 +21,7 @@ class FakeResponseDataTranslate {
     
     
     class DownloadError: Error {}
-    let errorDownload = DownloadError()
+//    let errorDownload = DownloadError()
     
     
     static var downloadCorrectDataTranslate: Data {

@@ -9,19 +9,18 @@ import Foundation
 
 class OneFileManager {
     
-    public static func ifFileExist(fileName: String) -> Bool{
-        //print(documentsDirectory().path + "/" + fileName)
+    public func ifFileExist(fileName: String) -> Bool{
         return FileManager().fileExists(atPath: documentsDirectory().path + "/" + fileName)
     }
       
-    private static func documentsDirectory() -> URL {
+    private func documentsDirectory() -> URL {
         let paths = FileManager.default.urls(
             for: .documentDirectory, 
                in: .userDomainMask)
         return paths[0]
     }
     
-    public static func saveChecklistItemsFixer(fileName: String, itemToSave:ItemFixer) {
+    public func saveChecklistItemsFixer(fileName: String, itemToSave:ItemFixer) {
         let encoder = PropertyListEncoder()
         do {
             let data = try encoder.encode(itemToSave)
@@ -32,7 +31,7 @@ class OneFileManager {
             print("Error encoding item array: \(error.localizedDescription)")
         }
     }
-    public static func loadItemsFixer(fileName: String) -> ItemFixer {
+    public func loadItemsFixer(fileName: String) -> ItemFixer {
         var itemToSave:ItemFixer!
         let path = documentsDirectory().appendingPathComponent(fileName) 
         if let data = try? Data(contentsOf: path) {
@@ -46,4 +45,9 @@ class OneFileManager {
         }
         return itemToSave
       }
+    public func ifTodayIsSameSameOf(dateStr : String) -> Bool {
+        let date = Date()
+        let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
+        return dateWithFormat == dateStr
+    }
 }

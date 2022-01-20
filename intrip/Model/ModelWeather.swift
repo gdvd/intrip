@@ -23,6 +23,7 @@ class ModelWeather {
     private var download = Download.shared
     init(download: Download){
         self.download = download
+        weatherCities.append(contentsOf: [cityOne(), cityTwo()])
     }
     
     public var weatherCities: [WeatherCity] = []
@@ -52,7 +53,7 @@ class ModelWeather {
                     }
                 }
                 
-                case .Failure(failure: let error):
+            case .Failure(failure: let error):
                 print(error.localizedDescription)
                 callBack(.Failure(failure: error.localizedDescription))
             }

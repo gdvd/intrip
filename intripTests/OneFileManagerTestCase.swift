@@ -9,12 +9,14 @@ import XCTest
 @testable import intrip
 
 class OneFileManagerTestCase: XCTestCase {
+    
+    let oneFileManager = OneFileManager()
 
     func testIfFileDoesntExist(){
         //Given
         //When
         //Then
-        XCTAssertFalse(OneFileManager.ifFileExist(fileName: "nothing"))
+        XCTAssertFalse(oneFileManager.ifFileExist(fileName: "nothing"))
     }
 
     func testFileDoesntExisteThenCreateIt(){
@@ -37,12 +39,12 @@ class OneFileManagerTestCase: XCTestCase {
         
         //When
         // test saveChecklistItemsFixer(fileName: String, itemToSave:ItemFixer)
-        OneFileManager.saveChecklistItemsFixer(fileName: "nothing", itemToSave: itemToSave)
-        XCTAssert(OneFileManager.ifFileExist(fileName: "nothing"))
+        oneFileManager.saveChecklistItemsFixer(fileName: "nothing", itemToSave: itemToSave)
+        XCTAssert(oneFileManager.ifFileExist(fileName: "nothing"))
                 
         //Then
         // Test loadItemsFixer(fileName: String) -> ItemFixer
-        let itemFixerOnDisk = OneFileManager.loadItemsFixer(fileName:"nothing")
+        let itemFixerOnDisk = oneFileManager.loadItemsFixer(fileName:"nothing")
         XCTAssertEqual(itemFixerOnDisk.base, "EUR")
         XCTAssertEqual(itemFixerOnDisk.success, true)
         XCTAssertEqual(itemFixerOnDisk.date, "2022-01-07")
@@ -50,7 +52,7 @@ class OneFileManagerTestCase: XCTestCase {
         let file = FileManager.default.urls( for: .documentDirectory, in: .userDomainMask)[0].path + "/nothing"
         do {
              let fileManager = FileManager.default
-            if OneFileManager.ifFileExist(fileName:"nothing") {
+            if oneFileManager.ifFileExist(fileName:"nothing") {
                 try fileManager.removeItem(atPath: file)
             } else {
                 XCTAssert(false)
