@@ -31,7 +31,7 @@ class OneFileManager {
             print("Error encoding item array: \(error.localizedDescription)")
         }
     }
-    public func loadItemsFixer(fileName: String) -> ItemFixer {
+    public func loadItemsFixer(fileName: String) -> ItemFixer? {
         var itemToSave:ItemFixer!
         let path = documentsDirectory().appendingPathComponent(fileName) 
         if let data = try? Data(contentsOf: path) {
@@ -45,7 +45,7 @@ class OneFileManager {
         }
         return itemToSave
       }
-    public func ifTodayIsSameSameOf(dateStr : String) -> Bool {
+    public func ifTodayIsSameOf(dateStr : String) -> Bool {
         let date = Date()
         let dateWithFormat = date.getFormattedDate(format: Constants.formatDateFixer)
         return dateWithFormat == dateStr

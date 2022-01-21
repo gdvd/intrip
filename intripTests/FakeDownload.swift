@@ -27,6 +27,18 @@ class FakeDownload: Download {
         isCase = witchCase
     }
     
+    override func downloadTranslate(textToTranslate: String, langIn: String, langOut: String, autoDetect: Bool, completionHandler: @escaping (Networkresponse<ResponseDeeplData>) -> Void) {
+        switch isCase {
+        case .success:
+            let responseDeeplData = ResponseDeeplData(detected_source_language: "FR", text: "Bonjour")
+            completionHandler(Networkresponse.Success(response: responseDeeplData))
+        case .failure:
+            completionHandler(Networkresponse.Failure(failure: ErrorFailure.returnNil))
+        case .none:
+            fatalError()
+        }
+    }
+    
     override func downloadRatesWithFixer(completionHandler: @escaping (Networkresponse<ItemFixer>) -> Void) {
         switch isCase {
         case .success:

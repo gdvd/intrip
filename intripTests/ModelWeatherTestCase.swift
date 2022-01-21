@@ -31,7 +31,7 @@ class ModelWeatherTestCase: XCTestCase {
         modelWeather.updateWeather { responseWeather in
             switch responseWeather {
             case .Success:
-                XCTAssert(false)
+                XCTExpectFailure()
             case .Failure(_):
                 XCTAssert(true)
             }

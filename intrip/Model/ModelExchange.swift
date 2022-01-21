@@ -40,10 +40,10 @@ class ModelExchange {
     public func getLastValues(callback: @escaping(ResponseData) -> Void ) {
         
         if oneFileManager.ifFileExist(fileName: Constants.fileNameExchangeFixer) { 
-            let itemFixerOnDisk = oneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)
-            if oneFileManager.ifTodayIsSameSameOf(dateStr: itemFixerOnDisk.date) {
-                // File Exist - Same Date -> show them
-                currencies.initWithDictAndSort((oneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)).rates)
+            let itemFixerOnDisk = oneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)!
+            if oneFileManager.ifTodayIsSameOf(dateStr: itemFixerOnDisk.date) {
+                // File Exist! - Same Date -> show them
+                currencies.initWithDictAndSort((oneFileManager.loadItemsFixer(fileName: Constants.fileNameExchangeFixer)!).rates)
                 callback( .Success)
             } else {
                 // File Exist - No same Date -> Reload

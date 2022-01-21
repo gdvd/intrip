@@ -14,7 +14,6 @@
 		12184C6C2796BEDB00B66C59 /* SaveInUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12184C6B2796BEDB00B66C59 /* SaveInUserDefault.swift */; };
 		12184C6E2797357100B66C59 /* DeeplData.json in Resources */ = {isa = PBXBuildFile; fileRef = 12184C6D2797357100B66C59 /* DeeplData.json */; };
 		1219E8A9278C92B600502C07 /* ResponseDeepl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8A8278C92B600502C07 /* ResponseDeepl.swift */; };
-		1219E8AB278CDAAA00502C07 /* Download+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8AA278CDAAA00502C07 /* Download+Ext.swift */; };
 		1219E8AE278D900B00502C07 /* ViewControllerTranslate+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8AD278D900B00502C07 /* ViewControllerTranslate+Ext.swift */; };
 		1219E8B0278DDBEF00502C07 /* FakeResponseDataTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219E8AF278DDBEF00502C07 /* FakeResponseDataTranslate.swift */; };
 		1229D37227885DE400EEF1B4 /* WeatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1229D37127885DE400EEF1B4 /* WeatherData.json */; };
@@ -72,7 +71,6 @@
 		12184C6B2796BEDB00B66C59 /* SaveInUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveInUserDefault.swift; sourceTree = "<group>"; };
 		12184C6D2797357100B66C59 /* DeeplData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeeplData.json; sourceTree = "<group>"; };
 		1219E8A8278C92B600502C07 /* ResponseDeepl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDeepl.swift; sourceTree = "<group>"; };
-		1219E8AA278CDAAA00502C07 /* Download+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Download+Ext.swift"; sourceTree = "<group>"; };
 		1219E8AD278D900B00502C07 /* ViewControllerTranslate+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewControllerTranslate+Ext.swift"; sourceTree = "<group>"; };
 		1219E8AF278DDBEF00502C07 /* FakeResponseDataTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseDataTranslate.swift; sourceTree = "<group>"; };
 		1229D37127885DE400EEF1B4 /* WeatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherData.json; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				12638DAF2771104B00631D6B /* Download.swift */,
-				1219E8AA278CDAAA00502C07 /* Download+Ext.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -366,7 +363,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				12638DB02771104B00631D6B /* Download.swift in Sources */,
-				1219E8AB278CDAAA00502C07 /* Download+Ext.swift in Sources */,
 				12638D7B276FD10C00631D6B /* ViewControllerExchange.swift in Sources */,
 				12638DB72774721A00631D6B /* ApiKeys.swift in Sources */,
 				12638DA42770932F00631D6B /* ModelExchange.swift in Sources */,

@@ -35,7 +35,7 @@ class Download {
     public func downloadTranslate(textToTranslate: String, langIn: String, langOut: String, autoDetect: Bool, completionHandler: @escaping (Networkresponse<ResponseDeeplData>) -> Void) {
         
         var urlStr = Constants.urlApiDeepl
-            .replacingOccurrences(of: Constants.textToTranslatePattern, with: textToTranslate.URLEncoded)
+            .replacingOccurrences(of: Constants.textToTranslatePattern, with: textToTranslate)
         
         urlStr = urlStr + langOut
         

@@ -17,9 +17,9 @@ class ModelExchangeTestCase: XCTestCase {
         modelExchange.getLastValues { response in
             switch response {
             case .Success:
-                XCTAssert(false)
+                XCTExpectFailure()
             case .Failure(failure: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             case .OldValues(date: _):
                 XCTAssert(true)
             }
@@ -33,9 +33,9 @@ class ModelExchangeTestCase: XCTestCase {
             case .Success:
                 XCTAssert(true)
             case .Failure(failure: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             case .OldValues(date: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             }
         }
     }
@@ -47,9 +47,9 @@ class ModelExchangeTestCase: XCTestCase {
             case .Success:
                 XCTAssert(true)
             case .Failure(failure: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             case .OldValues(date: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             }
         }
     }
@@ -61,9 +61,9 @@ class ModelExchangeTestCase: XCTestCase {
             case .Success:
                 XCTAssert(true)
             case .Failure(failure: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             case .OldValues(date: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             }
         }
     }
@@ -73,11 +73,11 @@ class ModelExchangeTestCase: XCTestCase {
         modelExchange.getLastValues { response in
             switch response {
             case .Success:
-                XCTAssert(false)
+                XCTExpectFailure()
             case .Failure(failure: _):
                 XCTAssert(true)
             case .OldValues(date: _):
-                XCTAssert(false)
+                XCTExpectFailure()
             }
         }
     }

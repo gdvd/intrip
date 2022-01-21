@@ -18,9 +18,16 @@ class ModelTranslate {
         getLanguages()
     }
     
+    // 4 XCTest
+    private var download = Download.shared
+    init(download: Download){
+        self.download = download
+        getLanguages()
+    }
+    
     public func getTranslateSentence(textToTranslate: String, langIn: String, langOut: String, autoDetect: Bool, completion: @escaping (Networkresponse<ResponseDeeplData>) -> Void) {
-        
-        Download.shared.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { response in
+
+        download.downloadTranslate(textToTranslate: textToTranslate.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { response in
             switch response {
             case .Success(response: let data):
                 completion(.Success(response: data))

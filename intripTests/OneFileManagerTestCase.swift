@@ -12,6 +12,14 @@ class OneFileManagerTestCase: XCTestCase {
     
     let oneFileManager = OneFileManager()
 
+    func testIfTodayIsSameOfGivenOldDateShouldBeFalse(){
+        XCTAssertFalse(oneFileManager.ifTodayIsSameOf(dateStr: "1970-01-01"))
+    }
+    
+    func testLoadItemFixerGivenNamefileFakeShouldBeNil(){
+        XCTAssertNil(oneFileManager.loadItemsFixer(fileName: "FileDoesntExist"))
+    }
+    
     func testIfFileDoesntExist(){
         //Given
         //When
@@ -44,7 +52,7 @@ class OneFileManagerTestCase: XCTestCase {
                 
         //Then
         // Test loadItemsFixer(fileName: String) -> ItemFixer
-        let itemFixerOnDisk = oneFileManager.loadItemsFixer(fileName:"nothing")
+        let itemFixerOnDisk = oneFileManager.loadItemsFixer(fileName:"nothing")!
         XCTAssertEqual(itemFixerOnDisk.base, "EUR")
         XCTAssertEqual(itemFixerOnDisk.success, true)
         XCTAssertEqual(itemFixerOnDisk.date, "2022-01-07")
@@ -62,8 +70,6 @@ class OneFileManagerTestCase: XCTestCase {
             XCTAssert(false)
         }
         XCTAssert(true)
-        
-        
     }
     
 }

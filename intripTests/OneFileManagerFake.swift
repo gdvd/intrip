@@ -39,7 +39,7 @@ class OneFileManagerFake: OneFileManager {
         return ItemFixer(success: true, timestamp: 1, base: "", date: "2022-01-20", rates: rates)
         
     }
-    override func ifTodayIsSameSameOf(dateStr: String) -> Bool {
+    override func ifTodayIsSameOf(dateStr: String) -> Bool {
         switch today {
         case .Yes:
             return true

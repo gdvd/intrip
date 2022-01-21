@@ -25,6 +25,7 @@ class Currencies {
             values.append(value)
         }
     }
+    
     private func reset() {
         names = []
         values = []
@@ -33,16 +34,20 @@ class Currencies {
     public func getRatio(_ nbExchangeIn: Int, _ nbExchangeOut: Int) -> Double {
         return values[nbExchangeOut] / values[nbExchangeIn]
     }
+    
     public func getCurrentExchange(_ positionInListOfValues: Int) -> Double {
         return values[positionInListOfValues]
     }
+    
     public func getPosOfNameExchange(nameExchange: String) -> Int {
         if let pos = names.enumerated().first(where: {$0.element.lowercased() == nameExchange.lowercased()}) {
             return pos.offset
         } else {
             if names.count > 0 {
+                // Names exist but not with 'nameExchange' -> return first
                 return 1
             } else {
+                // Names doesnt exist -> return -1
                 return -1
             }
         }
