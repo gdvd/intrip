@@ -27,7 +27,7 @@ class DownloadTestCase: XCTestCase {
         
         let responseTextEn = "Hello, the world"
         //Then
-        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+        download.downloadTranslate(textToTranslate: textToTranslate.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
             switch networkresp {
             case .Success(response: let response):
                 XCTAssertEqual(responseTextEn, response.text)
@@ -57,7 +57,7 @@ class DownloadTestCase: XCTestCase {
         
 //        let responseTextEn = "Hello, the world"
         //Then
-        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+        download.downloadTranslate(textToTranslate: textToTranslate.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
             switch networkresp {
             case .Success(_):
                 XCTAssert(false)
@@ -87,7 +87,7 @@ class DownloadTestCase: XCTestCase {
         
 //        let responseTextEn = "Hello, the world"
         //Then
-        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+        download.downloadTranslate(textToTranslate: textToTranslate.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
             switch networkresp {
             case .Success(_):
                 XCTAssert(false)
@@ -117,7 +117,7 @@ class DownloadTestCase: XCTestCase {
         
 //        let responseTextEn = "Hello, the world"
         //Then
-        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+        download.downloadTranslate(textToTranslate: textToTranslate.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
             switch networkresp {
             case .Success(_):
                 XCTAssert(false)
@@ -147,7 +147,7 @@ class DownloadTestCase: XCTestCase {
         
 //        let responseTextEn = "Hello, the world"
         //Then
-        download.downloadTranslate(textToTranslate: textToTranslate, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
+        download.downloadTranslate(textToTranslate: textToTranslate.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!, langIn: langIn, langOut: langOut, autoDetect: autoDetect) { networkresp in
             switch networkresp {
             case .Success(_):
                 XCTAssert(false)

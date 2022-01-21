@@ -9,7 +9,20 @@ import XCTest
 
 class CurrenciesTestCase: XCTestCase {
 
-    func testInitGivenNamesAndValuesEmpty(){
+    func testGetPosOfNameExchangeGivenArgInNamesArrayAndNameExchangeDoesntExistShouldBeOne() {
+        let currency = Currencies()
+        currency.names = ["OneStringInName"]
+        let res = currency.getPosOfNameExchange(nameExchange: "NoNameExist")
+        XCTAssertEqual(res, 1)
+    }
+    
+    func testGetPosOfNameExchangeGivenNoArgInNamesArrayAndNameExchangeDoesntExistShouldBeOne() {
+        let currency = Currencies()
+        let res = currency.getPosOfNameExchange(nameExchange: "NoNameExist")
+        XCTAssertEqual(res, -1)
+    }
+    
+    func testInitGivenNamesAndValuesEmpty() {
         
         //Given
         var itemToSave: ItemFixer!

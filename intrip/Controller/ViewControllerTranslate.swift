@@ -66,11 +66,11 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
                             print("Failure", error.localizedDescription)
                             switch error {
                             case .returnNil:
-                                print("Failure returnNil", error.localizedDescription)
+                                showError(msg: error.localizedDescription)
                             case .statusCodeWrong:
-                                print("Failure statusCodeWrong", error.localizedDescription)
+                                showError(msg: error.localizedDescription)
                             case .decodeError:
-                                print("Failure decodeError", error.localizedDescription)
+                                showError(msg: error.localizedDescription)
                             }
                         }
                     }
@@ -93,6 +93,12 @@ class ViewControllerTranslate: UIViewController, UIPickerViewDelegate, UIPickerV
             pickerViewIn.isUserInteractionEnabled = true
             pickerViewIn.alpha = 1
         }
+    }
+    
+    private func showError(msg: String){
+        let alertVC = UIAlertController(title: "Impossible", message: msg, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     func getSelectedLanguages() -> (langIn: String, langOut:String) {
